@@ -8,4 +8,4 @@ For the past several years, I have been working as a maths teacher and manager i
 
 With that behind me now, I have returned to Cambridge to finish my PhD. I am now exploring opportunities that can make good use of my training - in pure mathematics, data science, applied analysis, and education.
 
-![alt text](/website/assets/James.jpg "J S Cooper")
+![alt text](/assets/James.jpg "J S Cooper")

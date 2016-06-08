@@ -73,5 +73,5 @@ print("E =", E)
 {% endhighlight %}
 This translates as the the co-ordinates N 52&deg;12.178 and E 00&deg;07.141. Which we can enter into the Geochecker for confirmation and discover a location near my PhD advisor's rooms in Corpus!
 
-![alt text](/website/assets/GCCC.jpg "I like to Cache!")
+![alt text](/assets/GCCC.jpg "I like to Cache!")
 
