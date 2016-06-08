@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>J. S. Cooper - A Curious Mathematician</title>
+    <description>A place for me to reflect on my experiences of mathematical research, education, coding,  and the search for a engaging career.
+</description>
+    <link>http://jamesthetab.github.io/website//</link>
+    <atom:link href="http://jamesthetab.github.io/website//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 08 Jun 2016 11:57:53 +0100</pubDate>
+    <lastBuildDate>Wed, 08 Jun 2016 11:57:53 +0100</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Project Euler Geocaching Cambridge</title>
+        <description>&lt;p&gt;A couple of years ago I used the &lt;a href=&quot;https://projecteuler.net&quot;&gt;Project:Euler&lt;/a&gt; challenges as a stimulus/introduction to&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;. They were good at teaching the basics, but the motivation camr from solving quite geeky maths challenges. I discovered last summer that these had been used as the basis for a series of “mystery” &lt;a href=&quot;https://www.geocaching.com/play&quot;&gt;Geocaches&lt;/a&gt; around Cambridge, UK.&lt;/p&gt;
+
+&lt;p&gt;The cool idea is that these &lt;a href=&quot;https://www.geocaching.com/bookmarks/view.aspx?guid=efc9ca64-3d99-4d32-b2ef-47699f7b7651&quot;&gt;special GeoCaches&lt;/a&gt; require you to write pretty much the same code as for the Euler Challenges, apply the code to some specific values which return a number which is then used to generate co-ordinates (a checker is included on the site to avoid wild goose chases). When I set these as homework, the submission was just asking for a photo of the student with the GeoCache!&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at the first Project:Euler challenge.&lt;/p&gt;
+
+&lt;h1 id=&quot;multiples-of-3-and-5---problem-1httpsprojecteulernetproblem1&quot;&gt;Multiples of 3 and 5 - &lt;a href=&quot;https://projecteuler.net/problem=1&quot;&gt;Problem 1&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The sum of these multiples is 23.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Find the sum of all the multiples of 3 or 5 below 1000.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We might approach the problem using &lt;code class=&quot;highlighter-rouge&quot;&gt;Swift&lt;/code&gt; code as follows (using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Playground&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;XCode&lt;/code&gt;):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#=&amp;gt; prints &#39;234168&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The first Project:Euler inspired Geocahe  introduced as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If we list all the natural numbers below 10 that are divisible by 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Define f(n) as the sum of the multiples of 3 and 5 which are less than n. Thus we can write:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;f(10) = 23.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Then N = f(4720) + f(240) + f(77),&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;and E = f(175) + f(10).&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4720&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;77&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;175&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;N =&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E =&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#=&amp;gt; prints &#39;N = 5212178, E = 7141&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This translates as the the co-ordinates N 52°12.178 and E 00°07.141. Which we can enter into the Geochecker for confirmation and discover a location near my PhD advisor’s rooms in Corpus!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/website/assets/GCCC.jpg&quot; alt=&quot;alt text&quot; title=&quot;I like to Cache!&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 06 Jun 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Heading to WWDC</title>
+        <description>&lt;p&gt;I was very excited to find out a few weeks ago that I had won a scholarship to attend Apple’s developers’ conference in June, &lt;a href=&quot;https://developer.apple.com&quot;&gt;WWDC&lt;/a&gt;. The last few years have been very inward looking while I have been finishing up my PhD research and teaching, and the opportunity to ask “What’s really possible with all this cool tech?” is refreshing.&lt;/p&gt;
+
+&lt;p&gt;As I’ve tried to get up to speed I’ve taken an exciting tour through Swift, Jekyll, R, SQL, and d3, as well as reconnecting with old friends Python, GitHub, Project Jupyter, Markdown, and LaTex.&lt;/p&gt;
+
+&lt;p&gt;As I’ve begun the transition from Education/Academy to the world of Tech and Business I am shocked by the speed at which things happen, and excited by all the opportunites this churn represents.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 05 Jun 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/06/05/Heading-to-San-Francisco.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/06/05/Heading-to-San-Francisco.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Thank you Jekyll</title>
+        <description>&lt;p&gt;I am using &lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt; for the first time to provide the scaffolding for a website hosted on ‘GitHub’. The terminal interface is very powerful for this work and I have enjoyed learning about how to make new blog posts.&lt;/p&gt;
+
+&lt;p&gt;As someone who shares snippet of code I was pleased to learn that &lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt; also offers support for code snippets, highlighting to make the commands easy to read:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &#39;385&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As much for myself as anyone, here’s a link to &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of &lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 04 Jun 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/06/04/Thank-you-Jekyll.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/06/04/Thank-you-Jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Mathematical Alphabet</title>
+        <description>&lt;p&gt;Excellent news: the Oxford &lt;a href=&quot;https://www.maths.ox.ac.uk/r/alphabet&quot;&gt;Mathematics Alphabet&lt;/a&gt; now includes “F is for Fourier Transform” - a 200 year old mathematical technique which broke out of its original utility and today is invaluable across many fields.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Jun 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/06/01/Mathematical-Alphabet.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/06/01/Mathematical-Alphabet.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Circles of Apollonius</title>
+        <description>&lt;p&gt;Remarkably, the family of Apollonius Circles (defined by the locus of points whose distances from two given points are in different fixed ratio) are orthogonal to the family of all the circles passing through the two given to defined the ACs.&lt;/p&gt;
+
+&lt;p&gt;You can explore this result using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Geogebra&lt;/code&gt; &lt;a href=&quot;https://www.geogebra.org/m/ZZgu3UZC?doneurl=%2Fjamesthetab&quot;&gt;Applet&lt;/a&gt;, and create beautiful stylograph patterns once the &lt;a href=&quot;https://www.geogebra.org/m/FasYYFmx?doneurl=%2Fjamesthetab&quot;&gt;trace&lt;/a&gt; function is activated.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 May 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/05/25/Circles-of-Apollonius.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/05/25/Circles-of-Apollonius.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Rediscovering Feynman</title>
+        <description>&lt;p&gt;I was looking up some of Feynman’s lectures on physics to help provide an introduction on gravitation to guide a student with their IB Extended Essay when I rediscovered a beautiful (non-technical) talk Feynman gave towards the end of his career on the pleasure of finding things out. A fine way to spend 50 minutes!&lt;/p&gt;
+
+&lt;p&gt;If you haven’t seen this &lt;a href=&quot;http://www.dailymotion.com/video/x24gwgc_richard-feynman-the-pleasure-of-finding-things-out_news&quot;&gt;video&lt;/a&gt; before it is a fine way to spend 50 minutes.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 15 May 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/05/15/Rediscovering-Feynman.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/05/15/Rediscovering-Feynman.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Perfect, Amicable, and Social Numbers</title>
+        <description>&lt;p&gt;In a series of &lt;code class=&quot;highlighter-rouge&quot;&gt;Project:Jupyter&lt;/code&gt; pages I explore the relationships between numbers when we repeatedly replace a number with the sum of its proper factors - a number may move on never to reurn; number may map to itself in which case it is called &lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/perfect.ipynb&quot;&gt;Perfect&lt;/a&gt;; it may osciallte between two values when we have an [Amicable] pair; or more generally it may go round and round a &lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/social.ipynb&quot;&gt;Social&lt;/a&gt; loop.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 May 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/05/01/Perfect-Amicable-Social.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/05/01/Perfect-Amicable-Social.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>The Ten Men Meet</title>
+        <description>&lt;p&gt;This week we are going to look at a few different approaches to solving “digit problems”. Most famous amonst these is&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/TenMenMeet.ipynb&quot;&gt;THE+TEN+MEN=MEET&lt;/a&gt;,&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;where each of the letters represent a different non-zero digit.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Apr 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/04/15/The-Ten-Men-Meet.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/04/15/The-Ten-Men-Meet.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Nine Point Circle</title>
+        <description>&lt;p&gt;Inspired by a sketch I came across on the dust cover of an old maths textbook I look in this video at the &lt;a href=&quot;https://locly.com/api/card/25f6c4a9342a26e157b8e365a60df4e9/asset/video.m4v&quot;&gt;Nine Point Circle&lt;/a&gt;, also known as Feuerbach’s Circle, and then I share the dynamic geometry, &lt;code class=&quot;highlighter-rouge&quot;&gt;GeoGebra&lt;/code&gt; &lt;a href=&quot;https://www.geogebra.org/m/XAdMakbR?doneurl=%2Fjamesthetab&quot;&gt;applet&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Apr 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/04/01/Nine-Point-Circle.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/04/01/Nine-Point-Circle.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Happy Numbers</title>
+        <description>&lt;p&gt;In this tutorial I look at how a relatively simple concept of whether a number is &lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/HappyCode.ipynb&quot;&gt;“happy”&lt;/a&gt; (does it reach 1 eventually after repeatedly replacing the number by the sum of the squares of its digits) can lead to interesting behaviour which can only be described asymptotically.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Mar 2016 19:19:28 +0000</pubDate>
+        <link>http://jamesthetab.github.io/website//jekyll/update/2016/03/15/Happy-Numbers.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/website//jekyll/update/2016/03/15/Happy-Numbers.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+  </channel>
+</rss>
