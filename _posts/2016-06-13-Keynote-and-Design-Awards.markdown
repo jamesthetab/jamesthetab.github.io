@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "Keynote"
+date:   2016-06-13 20:19:28 +0100
+categories: jekyll update
+---
+
+Being in a room with 5,000 hyper Apple developers high on caffeine and donoughts is an experience I will never forget. It is very powerful to be in such a big crowd, and what started out as more of an anthropological study soon turned into genuine excitment, as lots of cool updates were released. Despite my best efforts I was unable to find my inner "Whoop", but made as much noise as I could with polite applause. 
+
+The media coverage is concentrating on the expansion of Siri onto laptops and desktops running macOS (the new name for OS X in its Sierra iteration), on the machine learning and prediction within iOS Apps based on your previous beahviours, and of opening up much of the standard functionality to extensions from developers (Siri, Messages, Maps,...). This was all very exciting, but this all paled for me with some "exciting beautiful wonderful great super fantastic powerful" news about Swift (Apple's own programming language).
+
+Swift has existed as part of XCode in the developer toolkit on OS X for a couple of years and has taken over from Objective C as the prefered Apple development language. Swift was made more accessible to non-expert coders with the advent of Playgrounds - an environment where the code compiles real time in the background, and you get immediate feedback on the effects of teeaking your code. Swift has been easy to read, and intuitive, but the need for a high powered Mac has limited distribution.
+
+Today Apple announced Swift Playgrounds for iOS (iPads and iPhones), and comprehensive teaching materials. What is really exciting for me is that even at the lowest entry, when the coding challenges contain a hook of nice graphics and a cute character to control, the coding is done in text, using authentic Swift code. The iPad interface is also very clever, with excellent predictive text (and a new popup "coding keyboard" which brings entering the standard symbols within a singles swipe) which will hopefully make coding on an iPad a viable option. We are in a wonderfully strong position to exploit this functionality when it becomes available in the autumn. Until then I have chance to work on more statistics resources, exloring the question "What's the big deal about Big Data" for our learners at the SPF.
+
+Introduction to [Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0).
+
+
+
+![alt text](/assets/JSCWWDC.jpg "I must not lose this badge")
