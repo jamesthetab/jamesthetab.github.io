@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Euclid: The game"
-date:   2016-06-06 20:19:28 +0100
+date:   2016-06-10 20:19:28 +0100
 categories: jekyll update
 ---
 
