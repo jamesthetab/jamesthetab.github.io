@@ -6,8 +6,8 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 Jun 2016 20:52:06 -0700</pubDate>
-    <lastBuildDate>Mon, 13 Jun 2016 20:52:06 -0700</lastBuildDate>
+    <pubDate>Mon, 13 Jun 2016 20:55:07 -0700</pubDate>
+    <lastBuildDate>Mon, 13 Jun 2016 20:55:07 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;p&gt;The media coverage is concentrating on the expansion of Siri onto laptops and desktops running macOS (the new name for OS X in its Sierra iteration), on the machine learning and prediction within iOS Apps based on your previous beahviours, and of opening up much of the standard functionality to extensions from developers (Siri, Messages, Maps,…). This was all very exciting, but this all paled for me with some “exciting beautiful wonderful great super fantastic powerful” news about Swift (Apple’s own programming language).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/JSCWWDC.jpg&quot; alt=&quot;alt text&quot; title=&quot;I must not lose this badge&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/JSCSF.jpg&quot; alt=&quot;alt text&quot; title=&quot;I must not lose this badge&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Swift has existed as part of XCode in the developer toolkit on OS X for a couple of years and has taken over from Objective C as the prefered Apple development language. Swift was made more accessible to non-expert coders with the advent of Playgrounds - an environment where the code compiles real time in the background, and you get immediate feedback on the effects of teeaking your code. Swift has been easy to read, and intuitive, but the need for a high powered Mac has limited distribution.&lt;/p&gt;
 
