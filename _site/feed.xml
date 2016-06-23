@@ -6,15 +6,15 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 23 Jun 2016 09:25:52 +0100</pubDate>
-    <lastBuildDate>Thu, 23 Jun 2016 09:25:52 +0100</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 09:41:36 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 09:41:36 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>Formatting Tools</title>
         <description>&lt;p&gt;As I build up this Blog I expect the mathematical content to become more involved, and I am excited to use Mermaid, a typesetting programme for flow diagrams and Gantt charts. I will give an example of a sequence diagram below.&lt;/p&gt;
 
-&lt;script src=&quot;/assets/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/mermaid.js&quot;&gt;&lt;/script&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
   sequenceDiagram
 A-&amp;gt;&amp;gt; B: Query

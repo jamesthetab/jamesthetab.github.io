@@ -21,4 +21,4 @@ markdown: kramdown
 gems: [jekyll-mermaid]
 
 mermaid:
-  src: '/assets/mermaid.min.js'
+  src: '/assets/mermaid.js'
