@@ -6,8 +6,8 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 23 Jun 2016 03:44:19 +0100</pubDate>
-    <lastBuildDate>Thu, 23 Jun 2016 03:44:19 +0100</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 09:13:22 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 09:13:22 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -32,8 +32,8 @@ B-&amp;gt;&amp;gt; A: Forward response
 
 </description>
         <pubDate>Sat, 18 Jun 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/06/18/Mermaid.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/18/Mermaid.html</guid>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/06/18/Formatting-Tools.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/18/Formatting-Tools.html</guid>
         
         
         <category>jekyll</category>
@@ -53,6 +53,8 @@ B-&amp;gt;&amp;gt; A: Forward response
 &lt;p&gt;Today Apple announced Swift Playgrounds for iOS (iPads and iPhones), and comprehensive teaching materials. What is really exciting for me is that even at the lowest entry, when the coding challenges contain a hook of nice graphics and a cute character to control, the coding is done in text, using authentic Swift code. The iPad interface is also very clever, with excellent predictive text (and a new popup “coding keyboard” which brings entering the standard symbols within a singles swipe) which will hopefully make coding on an iPad a viable option. We are in a wonderfully strong position to exploit this functionality when it becomes available in the autumn. Until then I have chance to work on more statistics resources, exloring the question “What’s the big deal about Big Data” for our learners at the SPF.&lt;/p&gt;
 
 &lt;p&gt;Introduction to &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0&quot;&gt;Swift&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/JSCSF.jpg&quot; alt=&quot;alt text&quot; title=&quot;WWDC 2016&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 13 Jun 2016 20:19:28 +0100</pubDate>

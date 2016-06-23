@@ -15,6 +15,8 @@ Today Apple announced Swift Playgrounds for iOS (iPads and iPhones), and compreh
 
 Introduction to [Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0).
 
+![alt text](/assets/JSCSF.jpg "WWDC 2016")
+
 
 
 
