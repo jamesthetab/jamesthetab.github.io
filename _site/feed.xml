@@ -6,13 +6,23 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 23 Jun 2016 09:24:02 +0100</pubDate>
-    <lastBuildDate>Thu, 23 Jun 2016 09:24:02 +0100</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 09:25:52 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 09:25:52 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>Formatting Tools</title>
         <description>&lt;p&gt;As I build up this Blog I expect the mathematical content to become more involved, and I am excited to use Mermaid, a typesetting programme for flow diagrams and Gantt charts. I will give an example of a sequence diagram below.&lt;/p&gt;
+
+&lt;script src=&quot;/assets/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+  sequenceDiagram
+A-&amp;gt;&amp;gt; B: Query
+B-&amp;gt;&amp;gt; C: Forward query
+Note right of C: Meanwhile, I&#39;m still thinking...
+C-&amp;gt;&amp;gt; B: Response
+B-&amp;gt;&amp;gt; A: Forward response
+&lt;/div&gt;
 
 &lt;p&gt;I’ve also incorporated MathJax to allow me to use LaTex commands to create beautifully typeset mathematics. Either as standalone equations. Pythagoras’ Theorem states that in a right triangle with hypotenuse \(c\), and other sides \(a\) and \(b\):&lt;/p&gt;
 
