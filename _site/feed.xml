@@ -6,9 +6,41 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 Jun 2016 20:57:08 -0700</pubDate>
-    <lastBuildDate>Mon, 13 Jun 2016 20:57:08 -0700</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 03:44:19 +0100</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 03:44:19 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Formatting Tools</title>
+        <description>&lt;p&gt;As I build up this Blog I expect the mathematical content to become more involved, and I am excited to use Mermaid, a typesetting programme for flow diagrams and Gantt charts. I give an example of a sequence diagram below.&lt;/p&gt;
+
+&lt;script src=&quot;/assets/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+  sequenceDiagram
+A-&amp;gt;&amp;gt; B: Query
+B-&amp;gt;&amp;gt; C: Forward query
+Note right of C: Meanwhile, I&#39;m still thinking...
+C-&amp;gt;&amp;gt; B: Response
+B-&amp;gt;&amp;gt; A: Forward response
+&lt;/div&gt;
+
+&lt;p&gt;I’ve also incorporated MathJax to allow me to use LaTex commands to create beautifully typeset mathematics. Either as standalone equations. Pythagoras’ Theorem states that in a right triangle with hypotenuse \(c\), and other sides \(a\) and \(b\):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^2 + b^2 = c^2&lt;/script&gt;
+
+&lt;p&gt;I can also set up inline math such as \(e^{i \pi} +1 = 0\).&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 18 Jun 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/06/18/Mermaid.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/18/Mermaid.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Keynote</title>
@@ -23,7 +55,7 @@
 &lt;p&gt;Introduction to &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0&quot;&gt;Swift&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 13 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Mon, 13 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/13/Keynote.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/13/Keynote.html</guid>
         
@@ -38,7 +70,7 @@
         <title>Euclid: The game</title>
         <description>&lt;p&gt;Ever since I discovered GeoGebra a couple of years ago I have thought about how cool it would be to guide students through Euclid’s Elements using just ruler and compasses, and gradually build up new tools. This has already been done -  &lt;a href=&quot;http://euclidthegame.com/&quot;&gt;Euclid the Game&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 10 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Fri, 10 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/10/Euclid-the-game.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/10/Euclid-the-game.html</guid>
         
@@ -114,7 +146,7 @@
 &lt;p&gt;&lt;img src=&quot;/assets/GCCC.jpg&quot; alt=&quot;alt text&quot; title=&quot;I like to Cache!&quot; /&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 06 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Mon, 06 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</guid>
         
@@ -133,7 +165,7 @@
 
 &lt;p&gt;As I’ve begun the transition from Education/Academy to the world of Tech and Business I am shocked by the speed at which things happen, and excited by all the opportunites this churn represents.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 05 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Sun, 05 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/05/Heading-to-San-Francisco.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/05/Heading-to-San-Francisco.html</guid>
         
@@ -164,7 +196,7 @@
 &lt;p&gt;As much for myself as anyone, here’s a link to &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of &lt;code class=&quot;highlighter-rouge&quot;&gt;Jekyll&lt;/code&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 04 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Sat, 04 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/04/Thank-you-Jekyll.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/04/Thank-you-Jekyll.html</guid>
         
@@ -179,7 +211,7 @@
         <title>Mathematical Alphabet</title>
         <description>&lt;p&gt;Excellent news: the Oxford &lt;a href=&quot;https://www.maths.ox.ac.uk/r/alphabet&quot;&gt;Mathematics Alphabet&lt;/a&gt; now includes “F is for Fourier Transform” - a 200 year old mathematical technique which broke out of its original utility and today is invaluable across many fields.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 01 Jun 2016 12:19:28 -0700</pubDate>
+        <pubDate>Wed, 01 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/01/Mathematical-Alphabet.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/01/Mathematical-Alphabet.html</guid>
         
@@ -196,7 +228,7 @@
 
 &lt;p&gt;You can explore this result using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Geogebra&lt;/code&gt; &lt;a href=&quot;https://www.geogebra.org/m/ZZgu3UZC?doneurl=%2Fjamesthetab&quot;&gt;Applet&lt;/a&gt;, and create beautiful stylograph patterns once the &lt;a href=&quot;https://www.geogebra.org/m/FasYYFmx?doneurl=%2Fjamesthetab&quot;&gt;trace&lt;/a&gt; function is activated.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 25 May 2016 12:19:28 -0700</pubDate>
+        <pubDate>Wed, 25 May 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/05/25/Circles-of-Apollonius.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/05/25/Circles-of-Apollonius.html</guid>
         
@@ -215,7 +247,7 @@
 
 &lt;p&gt;His article explores the idea that code and tech must grow from a passion and a clear &lt;a href=&quot;http://techcrunch.com/2016/05/10/please-dont-learn-to-code/&quot;&gt;motivation&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 16 May 2016 12:19:28 -0700</pubDate>
+        <pubDate>Mon, 16 May 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/05/16/Don't-Learn-to-code.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/05/16/Don't-Learn-to-code.html</guid>
         
@@ -233,24 +265,9 @@
 &lt;p&gt;If you haven’t seen this &lt;a href=&quot;http://www.dailymotion.com/video/x24gwgc_richard-feynman-the-pleasure-of-finding-things-out_news&quot;&gt;video&lt;/a&gt; before it is a fine way to spend 50 minutes.&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 15 May 2016 12:19:28 -0700</pubDate>
+        <pubDate>Sun, 15 May 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/05/15/Rediscovering-Feynman.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/05/15/Rediscovering-Feynman.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Perfect, Amicable, and Social Numbers</title>
-        <description>&lt;p&gt;In a series of &lt;code class=&quot;highlighter-rouge&quot;&gt;Project:Jupyter&lt;/code&gt; pages I explore the relationships between numbers when we repeatedly replace a number with the sum of its proper factors - a number may move on never to reurn; number may map to itself in which case it is called &lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/perfect.ipynb&quot;&gt;Perfect&lt;/a&gt;; it may osciallte between two values when we have an [Amicable] pair; or more generally it may go round and round a &lt;a href=&quot;https://github.com/jamesthetab/iBeacon/blob/master/social.ipynb&quot;&gt;Social&lt;/a&gt; loop.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 May 2016 12:19:28 -0700</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/05/01/Perfect-Amicable-Social.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/05/01/Perfect-Amicable-Social.html</guid>
         
         
         <category>jekyll</category>

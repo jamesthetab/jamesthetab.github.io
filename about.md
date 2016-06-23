@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-For the past several years, I have been working as a maths teacher and manager in schools, but this has been more the result of circumstance rather than long-term planning. Five years ago, I relocated to Yorkshire to support my parents through a health crisis. I took a teaching job at a boarding school nearby where I taught maths and served as Deputy Housemaster. I spent term breaks in Cambridge working with my supervisor and continued progressing on my research.
-
-With that behind me now, I have returned to Cambridge to finish my PhD. I am now exploring opportunities that can make good use of my training - in pure mathematics, data science, applied analysis, and education.
+I am currently finishing a PhD in pure mathematics at University of Cambridge in which I am researching the naturality of the Integral Logarithm in Algebraic Number Theory with Dr Christopher Brookes. I graduated with three firsts and a distinction in my degrees (near the top of the tripos rankings in parts II and III). I then took a sabatical from research and have extensive working experience as a maths educator for ages 11-22 (both in the classroom and management). This has included pastoral work and curriculum development. As a US Permanent Resident I am now looking for opportunities that could leverage my skills in pure mathematics, applied analysis, and education (in Europe or North America) as I transition to a university role or the tech world.
 
 ![alt text](/assets/James.jpg "J S Cooper")

@@ -18,3 +18,7 @@ github_username:  jamesthetab
 
 # Build settings
 markdown: kramdown
+gems: [jekyll-mermaid]
+
+mermaid:
+  src: '/assets/mermaid.min.js'
