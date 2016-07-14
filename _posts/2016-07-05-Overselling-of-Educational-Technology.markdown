@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Overselling of educational technology"
+title:  "The Overselling of Educational Technology"
 date:   2016-07-05 20:19:28 +0100
 categories: jekyll update
 ---
