@@ -6,8 +6,8 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Aug 2016 13:14:46 +0100</pubDate>
-    <lastBuildDate>Tue, 09 Aug 2016 13:14:46 +0100</lastBuildDate>
+    <pubDate>Tue, 09 Aug 2016 18:57:44 +0100</pubDate>
+    <lastBuildDate>Tue, 09 Aug 2016 18:57:44 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -97,7 +97,7 @@ There are 143 Happy numbers between 1 and 1000
 
 &lt;p&gt;We can now step back and be much more confident in our assertion that the groth is fundamentally linear, with noise at the start disrupting the beautiful straight line.&lt;/p&gt;
 
-&lt;p&gt;Now we have a clear conjecture we can be much more targeted in our investigation. I would then encourage students to think that beyond a certain point (where?) the operation of replacing a number by a sum of its digits is decreasing, and so long term behaviour is determined by what has already happened for lower values. If we can then prove something about the distribution of the images being random between happy and unhappy numbers we would have an anlytic proof.&lt;/p&gt;
+&lt;p&gt;Now we have a clear conjecture we can be much more targeted in our investigation. I would then encourage students to think that beyond a certain point (where?) the operation of replacing a number by a sum of its digits is decreasing, and so long term behaviour is determined by what has already happened for lower values. If we can then prove something about the distribution of the images being random between happy and unhappy numbers we would have an anlytic proof. Otherwise, we could do more investigation.&lt;/p&gt;
 
 &lt;p&gt;In this investigation it is important to note that I am not claiming the algorithm I give above to be especially efficient, only that it “works”, and the fact that it is able to generate meaningful data in a reasonable time on my laptop is “good enough”. The area of efficiency of operations (&lt;a href=&quot;http://www.claymath.org/millennium-problems/p-vs-np-problem&quot;&gt;P vs NP Problem&lt;/a&gt; for example) is fascinating, but so often I feel that my time is more precious than that of the computer processor, and I tend to quick dirty code over elegent solution. Hopefully elegence will come in the mathematics I use to understand the experimental data I’ve generated.&lt;/p&gt;
 </description>
