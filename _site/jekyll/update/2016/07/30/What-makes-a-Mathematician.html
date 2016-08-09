@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What makes a mathematician?</title>
+  <meta name="description" content="As an educator I often reflect on what characteristics make a good mathematician. Clearly, there has to be a basic level of competence in arithmetic and alge...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/07/30/What-makes-a-Mathematician.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">J. S. Cooper - A Curious Mathematician</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">What makes a mathematician?</h1>
+    <p class="post-meta"><time datetime="2016-07-30T20:19:28+01:00" itemprop="datePublished">Jul 30, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>As an educator I often reflect on what characteristics make a good mathematician. Clearly, there has to be a basic level of competence in arithmetic and algebra, the language of mathematics in order to access problems. Far beyond that, at the research level we get into questions of aesthetics, and feeling for what a solution should look like, and having the creativity to approach problems in new ways and draw connections between areas which at first seems disconnected.</p>
+
+<p>At the school level, and for basic problem, a skill which begins to differentiate students in their early teens is the ability to wear bifocal lenses when working on questions. Rather like how good drivers are constantly looking for danger/opportunity both near and far, a mathematician needs to be able to focus on the details of a handful of cases and then step back, sometimes even abstract the problem and place it in a more general context. Progress can be made in both settings, and by oscillating between the two discovery may be accelerated.</p>
+
+<p>Earlier in the year I introduced <a href="http://coopermaths.com/jekyll/update/2016/03/15/Happy-Numbers.html">Happy Numbers</a> as an example of using Jupyter Notebooks to experiment in mathematics, and I return to this idea now.</p>
+
+<p>A number is either happy or it isn’t. There is no obvious way when you first approach the problem to predict how many numbers are happy, and the fact that you are relying on the decimal presentation of a number makes the question rather artifical and messy.</p>
+
+<p>So the first thing we would do is to focus in, play with a few cases, maybe the integers 1 to 10 and see if they are happy.</p>
+
+<p>There is no obvious pattern there (although we notice that there only seems to be two options - numbers are happy or they get trapped in the cycle, … → 4→16→37→58→89→145→42→20→4→…).</p>
+
+<p>We now have a choice, whether to continue in our heads or write some code to check numbers. I went for code, and studied the integers up to 1000:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">NH</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">n</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">t</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;=</span><span class="mi">10</span><span class="p">:</span>
+    <span class="n">tops</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">while</span> <span class="n">n</span><span class="o">&lt;=</span><span class="n">tops</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">sqlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">squares</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">while</span> <span class="ow">not</span><span class="p">(</span><span class="n">k</span> <span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span><span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">sqlist</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">squares</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">sqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sqlist</span><span class="p">:</span>
+            <span class="n">NH</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"There are"</span><span class="p">),</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span> <span class="p">(</span><span class="s">"Happy numbers between"</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"and"</span><span class="p">),</span> <span class="p">(</span><span class="n">tops</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tops</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'b-'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"The Happy Numbers we've discovered are"</span><span class="p">),</span> <span class="n">H</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>There are 20 Happy numbers between 1 and 100
+There are 32 Happy numbers between 1 and 200
+There are 44 Happy numbers between 1 and 300
+There are 66 Happy numbers between 1 and 400
+There are 76 Happy numbers between 1 and 500
+There are 81 Happy numbers between 1 and 600
+There are 101 Happy numbers between 1 and 700
+There are 111 Happy numbers between 1 and 800
+There are 124 Happy numbers between 1 and 900
+There are 143 Happy numbers between 1 and 1000
+</code></pre>
+</div>
+
+<p><img src="/assets/output_0_1.png" alt="png" title="Frequency of Happy Numbers up to 1,000" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>The Happy Numbers we've discovered are [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100, 103, 109, 129, 130, 133, 139, 167, 176, 188, 190, 192, 193, 203, 208, 219, 226, 230, 236, 239, 262, 263, 280, 291, 293, 301, 302, 310, 313, 319, 320, 326, 329, 331, 338, 356, 362, 365, 367, 368, 376, 379, 383, 386, 391, 392, 397, 404, 409, 440, 446, 464, 469, 478, 487, 490, 496, 536, 556, 563, 565, 566, 608, 617, 622, 623, 632, 635, 637, 638, 644, 649, 653, 655, 656, 665, 671, 673, 680, 683, 694, 700, 709, 716, 736, 739, 748, 761, 763, 784, 790, 793, 802, 806, 818, 820, 833, 836, 847, 860, 863, 874, 881, 888, 899, 901, 904, 907, 910, 912, 913, 921, 923, 931, 932, 937, 940, 946, 964, 970, 973, 989, 998, 1000]
+</code></pre>
+</div>
+
+<p>This graph gives us an insight into what is happening, but it is still not clear what conjecture we should make based on this.</p>
+
+<p>It looks like roughly linear growth but it is rather choppy. However, what is really wonderful about using code to experiment with in mathematics is that by changing a single value (where to test up to) we can recycle our code to look at the trend up to 100,000:</p>
+
+<p><img src="/assets/biggertest.png" alt="png" title="Frequency of Happy Numbers up to 100,000" /></p>
+
+<p>We can now step back and be much more confident in our assertion that the groth is fundamentally linear, with noise at the start disrupting the beautiful straight line.</p>
+
+<p>Now we have a clear conjecture we can be much more targeted in our investigation. I would then encourage students to think that beyond a certain point (where?) the operation of replacing a number by a sum of its digits is decreasing, and so long term behaviour is determined by what has already happened for lower values. If we can then prove something about the distribution of the images being random between happy and unhappy numbers we would have an anlytic proof.</p>
+
+<p>In this investigation it is important to note that I am not claiming the algorithm I give above to be especially efficient, only that it “works”, and the fact that it is able to generate meaningful data in a reasonable time on my laptop is “good enough”. The area of efficiency of operations (<a href="http://www.claymath.org/millennium-problems/p-vs-np-problem">P vs NP Problem</a> for example) is fascinating, but so often I feel that my time is more precious than that of the computer processor, and I tend to quick dirty code over elegent solution. Hopefully elegence will come in the mathematics I use to understand the experimental data I’ve generated.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">J. S. Cooper - A Curious Mathematician</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+         
+          <li><a href="mailto:jsc42@cantab.net">jsc42@cantab.net</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jamesthetab"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jamesthetab</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/jamesthetab">
+            <span class="icon  icon--twitter">
+             <svg viewBox="0 0 61 61">
+             <path fill="#828282" d="M49.265,4.667H7.145c-2.016,0-3.651,1.596-3.651,3.563v42.613c0,1.966,1.635,3.562,3.651,3.562h42.12   c2.019,0,3.654-1.597,3.654-3.562V8.23C52.919,6.262,51.283,4.667,49.265,4.667z M18.475,46.304h-7.465V23.845h7.465V46.304z    M14.743,20.777h-0.05c-2.504,0-4.124-1.725-4.124-3.88c0-2.203,1.67-3.88,4.223-3.88c2.554,0,4.125,1.677,4.175,3.88   C18.967,19.052,17.345,20.777,14.743,20.777z M45.394,46.304h-7.465V34.286c0-3.018-1.08-5.078-3.781-5.078   c-2.062,0-3.29,1.389-3.831,2.731c-0.197,0.479-0.245,1.149-0.245,1.821v12.543h-7.465c0,0,0.098-20.354,0-22.459h7.465v3.179   c0.992-1.53,2.766-3.709,6.729-3.709c4.911,0,8.594,3.211,8.594,10.11V46.304z"/>
+             </svg>
+            </span>
+            <span class="username">jamesthetab
+            </span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>A place for me to reflect on my experiences of mathematical research, education, coding,  and the search for an engaging career.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+  </body>
+
+</html>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
