@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 
-In order to highlight some of the power of the Jupyter Notebook I take some analysis performed by Mat Leonard (course developer at Udacity) on his [blog](http://matatat.org/body-fat-percentage.html) and converted to .ipynb worksheet adding commentary.
+In order to highlight some of the power of the Jupyter Notebook I take some analysis performed by Mat Leonard (course developer at Udacity) on his [blog](http://matatat.org/pages/about.html) and converted to .ipynb worksheet adding commentary.
 
 Background
 -------------
