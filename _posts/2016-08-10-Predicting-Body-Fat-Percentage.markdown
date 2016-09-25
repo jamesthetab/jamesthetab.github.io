@@ -230,17 +230,17 @@ sb.pairplot(data[['pbf_b', 'bmi', 'wrist', 'abdomen']],
 
 From this we can see the percent body fat is correlated with weight and body measurements, while height has little if any effect. There are also correlations between body measurements and weight which we'll have to deal with later. I'm going to use a linear regression model to predict percent body fat from the data.
 
-A linear regression model is a formal way to draw a line through a set of data points. For instance, we can see that when we plot abdomen circumference on the \(x\)-axis and percent body fat on the \(y\)-axis (first row, fifth column), the data falls along a general upward sloped line. As we would expect, a larger gut indicates more body fat. We can get a decent estimate of this relationship by printing out the plot and drawing a line through the data points by hand. However, we want to find the "best" line. What I mean by "best" is that the line we draw has the least error predicting the existing data points.
+A linear regression model is a formal way to draw a line through a set of data points. For instance, we can see that when we plot abdomen circumference on the \\(x\\)-axis and percent body fat on the \\(y\\)-axis (first row, fifth column), the data falls along a general upward sloped line. As we would expect, a larger gut indicates more body fat. We can get a decent estimate of this relationship by printing out the plot and drawing a line through the data points by hand. However, we want to find the "best" line. What I mean by "best" is that the line we draw has the least error predicting the existing data points.
 
 
-We can define any line using an intercept, \(\beta_0\), and a slope, \(\beta_1\), as $$y = \beta_0 + \beta_1 x$$.
+We can define any line using an intercept, \\(\beta_0\\), and a slope, \\(\beta_1\\), as $$y = \beta_0 + \beta_1 x$$.
 
-Here, \(y\) is our dependent variable, percent body fat for example, and \(x\) is the independent variable, such as abdomen circumference. Depending on the context and conventions, \(x\) is also called the explanatory variable, regressor, feature, predictor, and more. Our model is a prediction of the percent body fat \(\hat y\) using the abdomen circumference \(x\).
+Here, \\(y\\) is our dependent variable, percent body fat for example, and \\(x\\) is the independent variable, such as abdomen circumference. Depending on the context and conventions, \\(x\\) is also called the explanatory variable, regressor, feature, predictor, and more. Our model is a prediction of the percent body fat \\(\hat y\\) using the abdomen circumference \\(x\\).
 
 
 $$\hat y_i = \beta_0 + \beta_1 x_i$$
 
-where the subscript \(i\) indicates which data point we are using (\(i=1\) is the first data point, and so on). Our goal here is to find values for \(\beta_0\) and \(\beta_1\) which give us the smallest error \(\epsilon_i = y_i - \hat y_i\).
+where the subscript \\(i\\) indicates which data point we are using (\\(i=1\\) is the first data point, and so on). Our goal here is to find values for \\(\beta_0\\) and \\(\beta_1\\) which give us the smallest error \\(\epsilon_i = y_i - \hat y_i\\).
 
 We find an exact solution to this problem if we minimize the sum of the squares of the errors,
 
@@ -317,7 +317,7 @@ fig.tight_layout()
 ![png](/assets/output_14_0.png)
 
 
-We see here that our model fits the data pretty well, but I'd like to measure the quality of the fit. A common way to measure the performance of the model is to split the data into a training set and a testing set. You fit the model to the training set, then measure how well it can predict the test set. This is known as cross-validation (CV) and is sort of the industry standard. I'll use ```scikits learn``` to perform \(k\)-folds CV. This method separates the data into \(k\) parts (folds). Then, it uses \(k−1\) folds to fit the model and then tests the model on the left out fold. Repeat this \(k\) times using each fold to test only once.
+We see here that our model fits the data pretty well, but I'd like to measure the quality of the fit. A common way to measure the performance of the model is to split the data into a training set and a testing set. You fit the model to the training set, then measure how well it can predict the test set. This is known as cross-validation (CV) and is sort of the industry standard. I'll use ```scikits learn``` to perform \\(k\\)-folds CV. This method separates the data into \\(k\\) parts (folds). Then, it uses \\(k−1\\) folds to fit the model and then tests the model on the left out fold. Repeat this \\(k\\) times using each fold to test only once.
 
 
 ```python
@@ -333,15 +333,13 @@ print("Mean absolute error: {:.3f}".format(-scores.mean()))
 Multi-Variable Model
 ------------------
 
-We can improve our model by including all the information we have in the data. Using a linear model makes this simple, we just add more coefficients. For each data point we have \(m\) features and we can use them to predict the body fat percentage \(\hat y\):
+We can improve our model by including all the information we have in the data. Using a linear model makes this simple, we just add more coefficients. For each data point we have \\(m\\) features and we can use them to predict the body fat percentage \\(\hat y\\):
 
 $$\hat y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i +\dots + \beta_m x_i = \sum_{i=1}^m \beta_j x_j$$
 
-where the subscript \(j\) indicates our data features and \(x_0=1\).
+where the subscript \\(j\\) indicates our data features and \\(x_0=1\\).
 
-For convenience, we can write our model in matrix notation:
-
-$$\hat y = \mathbf X \beta$$.
+For convenience, we can write our model in matrix notation: $$\hat y = \mathbf X \beta$$.
 
 $$\hat y = 
 \left(
@@ -375,7 +373,9 @@ $$\hat y =
  $$
 
 
-Again, our error is \(\mathbf{\epsilon} = \sum_{i=1}^{n} \left|\, y_i - \hat{y}_i \right|^2\) which we want to minimize. There is an exact and unique solution for the coefficients that minimize the error:
+Again, our error is 
+$$\mathbf{\epsilon} = \sum_{i=1}^{n} \left|\, y_i - \hat{y}_i \right|^2$$ 
+which we want to minimize. There is an exact and unique solution for the coefficients that minimize the error:
 
 $$\hat \beta = (X^TX)^{-1}X^Ty$$
 
@@ -438,7 +438,7 @@ Since we know that many of our features are correlated, we can use ridge regress
 
 $$\epsilon = \sum_{i=1}^n \vert y_i− \hat y_i \vert^2 + \lambda \sum_j^m\beta^2_j$$
 
-The penalty pulls the coefficients towards zero, a process known as shrinkage, and decreases the variance in the model, leading towards better predictions. The amount of shrinkage is controlled by the parameter \(\lambda\), as \(\lambda \rightarrow \infty\) all coefficients go to zero, and as \(\lambda \rightarrow 0\) we get our normal linear regression. However, there is no way to know before hand what the best value for \(\lambda\) is. I can find the best \(\lambda\) by fitting a bunch of models with different \(\lambda\) and choose the one with the least prediction error. This is typically done with (again) cross-validation and is available from ```scikits-learn```.
+The penalty pulls the coefficients towards zero, a process known as shrinkage, and decreases the variance in the model, leading towards better predictions. The amount of shrinkage is controlled by the parameter \\(\lambda\\), as \\(\lambda \rightarrow \infty\\) all coefficients go to zero, and as \\(\lambda \rightarrow 0\\) we get our normal linear regression. However, there is no way to know before hand what the best value for \\(\lambda\\) is. I can find the best \\(\lambda\\) by fitting a bunch of models with different \\(\lambda\\) and choose the one with the least prediction error. This is typically done with (again) cross-validation and is available from ```scikits-learn```.
 
 I'll also need to scale the features so that all the coefficients are on the same scale, and center the dependent variable as well.
 
@@ -486,7 +486,7 @@ Using ridge regression does improve our model a bit. However, I don't want to ha
 
 $$\epsilon = \sum_{i=1}^n \vert y_i− \hat y_i \vert^2 + \lambda \sum_j^m\beta^2_j$$
 
-We can see how the coefficients start at \(0\) for large \(\lambda\), then become non-zero as \(\lambda\) is decreased.
+We can see how the coefficients start at \\(0\\) for large \\(\lambda\\), then become non-zero as \\(\lambda\\) is decreased.
 
 
 ```python
@@ -513,7 +513,7 @@ _ = plt.ylabel('coefficient')
 ![png](/assets/output_26_0.png)
 
 
-We can see here that abdomen circumference is always a strong predictor. As \(\lambda\) gets smaller, the coefficient for height becomes non-zero, then wrist circumference and age. I'm going to use these four features for my final model. It is reasonable that height and wrist circumference are negatively related to percent body fat. They indicate how long and how thick your bones are, respectively. Also, it seems that as one gets older, the percent body fat increases, holding everything else constant. I'm guessing this is from a change in the distribution of tissues, younger men having more muscle than older men. Now we can build a simpler model using only these features.
+We can see here that abdomen circumference is always a strong predictor. As \\(\lambda\\) gets smaller, the coefficient for height becomes non-zero, then wrist circumference and age. I'm going to use these four features for my final model. It is reasonable that height and wrist circumference are negatively related to percent body fat. They indicate how long and how thick your bones are, respectively. Also, it seems that as one gets older, the percent body fat increases, holding everything else constant. I'm guessing this is from a change in the distribution of tissues, younger men having more muscle than older men. Now we can build a simpler model using only these features.
 
 
 ```python

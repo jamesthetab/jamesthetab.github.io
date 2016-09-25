@@ -267,15 +267,15 @@
 
 <p>From this we can see the percent body fat is correlated with weight and body measurements, while height has little if any effect. There are also correlations between body measurements and weight which we’ll have to deal with later. I’m going to use a linear regression model to predict percent body fat from the data.</p>
 
-<p>A linear regression model is a formal way to draw a line through a set of data points. For instance, we can see that when we plot abdomen circumference on the $x$-axis and percent body fat on the $y$-axis (first row, fifth column), the data falls along a general upward sloped line. As we would expect, a larger gut indicates more body fat. We can get a decent estimate of this relationship by printing out the plot and drawing a line through the data points by hand. However, we want to find the “best” line. What I mean by “best” is that the line we draw has the least error predicting the existing data points.</p>
+<p>A linear regression model is a formal way to draw a line through a set of data points. For instance, we can see that when we plot abdomen circumference on the \(x\)-axis and percent body fat on the \(y\)-axis (first row, fifth column), the data falls along a general upward sloped line. As we would expect, a larger gut indicates more body fat. We can get a decent estimate of this relationship by printing out the plot and drawing a line through the data points by hand. However, we want to find the “best” line. What I mean by “best” is that the line we draw has the least error predicting the existing data points.</p>
 
-<p>We can define any line using an intercept, $\beta_0$, and a slope, $\beta_1$, as <script type="math/tex">y = \beta_0 + \beta_1 x</script>.</p>
+<p>We can define any line using an intercept, \(\beta_0\), and a slope, \(\beta_1\), as <script type="math/tex">y = \beta_0 + \beta_1 x</script>.</p>
 
-<p>Here, $y$ is our dependent variable, percent body fat for example, and $x$ is the independent variable, such as abdomen circumference. Depending on the context and conventions, $x$ is also called the explanatory variable, regressor, feature, predictor, and more. Our model is a prediction of the percent body fat $\hat y$ using the abdomen circumference $x$.</p>
+<p>Here, \(y\) is our dependent variable, percent body fat for example, and \(x\) is the independent variable, such as abdomen circumference. Depending on the context and conventions, \(x\) is also called the explanatory variable, regressor, feature, predictor, and more. Our model is a prediction of the percent body fat \(\hat y\) using the abdomen circumference \(x\).</p>
 
 <script type="math/tex; mode=display">\hat y_i = \beta_0 + \beta_1 x_i</script>
 
-<p>where the subscript $i$ indicates which data point we are using ($i=1$ is the first data point, and so on). Our goal here is to find values for $\beta_0$ and $\beta_1$ which give us the smallest error $\epsilon_i = y_i - \hat y_i$.</p>
+<p>where the subscript \(i\) indicates which data point we are using (\(i=1\) is the first data point, and so on). Our goal here is to find values for \(\beta_0\) and \(\beta_1\) which give us the smallest error \(\epsilon_i = y_i - \hat y_i\).</p>
 
 <p>We find an exact solution to this problem if we minimize the sum of the squares of the errors,</p>
 
@@ -340,7 +340,7 @@ intercept: -37.991 +\- 2.541
 
 <p><img src="/assets/output_14_0.png" alt="png" /></p>
 
-<p>We see here that our model fits the data pretty well, but I’d like to measure the quality of the fit. A common way to measure the performance of the model is to split the data into a training set and a testing set. You fit the model to the training set, then measure how well it can predict the test set. This is known as cross-validation (CV) and is sort of the industry standard. I’ll use <code class="highlighter-rouge">scikits learn</code> to perform $k$-folds CV. This method separates the data into $k$ parts (folds). Then, it uses $k−1$ folds to fit the model and then tests the model on the left out fold. Repeat this $k$ times using each fold to test only once.</p>
+<p>We see here that our model fits the data pretty well, but I’d like to measure the quality of the fit. A common way to measure the performance of the model is to split the data into a training set and a testing set. You fit the model to the training set, then measure how well it can predict the test set. This is known as cross-validation (CV) and is sort of the industry standard. I’ll use <code class="highlighter-rouge">scikits learn</code> to perform \(k\)-folds CV. This method separates the data into \(k\) parts (folds). Then, it uses \(k−1\) folds to fit the model and then tests the model on the left out fold. Repeat this \(k\) times using each fold to test only once.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">linmodel</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">'pbf_b'</span><span class="p">],</span>
@@ -355,15 +355,13 @@ intercept: -37.991 +\- 2.541
 
 <h2 id="multi-variable-model">Multi-Variable Model</h2>
 
-<p>We can improve our model by including all the information we have in the data. Using a linear model makes this simple, we just add more coefficients. For each data point we have $m$ features and we can use them to predict the body fat percentage $\hat y$:</p>
+<p>We can improve our model by including all the information we have in the data. Using a linear model makes this simple, we just add more coefficients. For each data point we have \(m\) features and we can use them to predict the body fat percentage \(\hat y\):</p>
 
 <script type="math/tex; mode=display">\hat y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i +\dots + \beta_m x_i = \sum_{i=1}^m \beta_j x_j</script>
 
-<p>where the subscript $j$ indicates our data features and $x_0=1$.</p>
+<p>where the subscript \(j\) indicates our data features and \(x_0=1\).</p>
 
-<p>For convenience, we can write our model in matrix notation:</p>
-
-<p><script type="math/tex">\hat y = \mathbf X \beta</script>.</p>
+<p>For convenience, we can write our model in matrix notation: <script type="math/tex">\hat y = \mathbf X \beta</script>.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \hat y = 
@@ -396,15 +394,9 @@ intercept: -37.991 +\- 2.541
 \end{array}
 \right) %]]></script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Again, our error is $\mathbf{\epsilon} = \sum_{i=1}^{n} \left</td>
-      <td>\, y_i - \hat{y}_i \right</td>
-      <td>^2 $ which we want to minimize. There is an exact and unique solution for the coefficients that minimize the error:</td>
-    </tr>
-  </tbody>
-</table>
+<p>Again, our error is 
+<script type="math/tex">\mathbf{\epsilon} = \sum_{i=1}^{n} \left|\, y_i - \hat{y}_i \right|^2</script> 
+which we want to minimize. There is an exact and unique solution for the coefficients that minimize the error:</p>
 
 <script type="math/tex; mode=display">\hat \beta = (X^TX)^{-1}X^Ty</script>
 
@@ -459,7 +451,7 @@ Mean absolute error: 3.353
 
 <script type="math/tex; mode=display">\epsilon = \sum_{i=1}^n \vert y_i− \hat y_i \vert^2 + \lambda \sum_j^m\beta^2_j</script>
 
-<p>The penalty pulls the coefficients towards zero, a process known as shrinkage, and decreases the variance in the model, leading towards better predictions. The amount of shrinkage is controlled by the parameter $\lambda$, as $\lambda \rightarrow \infty$ all coefficients go to zero, and as $\lambda \rightarrow 0$ we get our normal linear regression. However, there is no way to know before hand what the best value for $\lambda$ is. I can find the best $\lambda$ by fitting a bunch of models with different $\lambda$ and choose the one with the least prediction error. This is typically done with (again) cross-validation and is available from <code class="highlighter-rouge">scikits-learn</code>.</p>
+<p>The penalty pulls the coefficients towards zero, a process known as shrinkage, and decreases the variance in the model, leading towards better predictions. The amount of shrinkage is controlled by the parameter \(\lambda\), as \(\lambda \rightarrow \infty\) all coefficients go to zero, and as \(\lambda \rightarrow 0\) we get our normal linear regression. However, there is no way to know before hand what the best value for \(\lambda\) is. I can find the best \(\lambda\) by fitting a bunch of models with different \(\lambda\) and choose the one with the least prediction error. This is typically done with (again) cross-validation and is available from <code class="highlighter-rouge">scikits-learn</code>.</p>
 
 <p>I’ll also need to scale the features so that all the coefficients are on the same scale, and center the dependent variable as well.</p>
 
@@ -506,7 +498,7 @@ Mean absolute error: 3.302
 
 <script type="math/tex; mode=display">\epsilon = \sum_{i=1}^n \vert y_i− \hat y_i \vert^2 + \lambda \sum_j^m\beta^2_j</script>
 
-<p>We can see how the coefficients start at $0$ for large $\lambda$, then become non-zero as $\lambda$ is decreased.</p>
+<p>We can see how the coefficients start at \(0\) for large \(\lambda\), then become non-zero as \(\lambda\) is decreased.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s">'height'</span><span class="p">,</span> <span class="s">'weight'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">,</span> <span class="s">'neck'</span><span class="p">,</span> <span class="s">'chest'</span><span class="p">,</span> <span class="s">'abdomen'</span><span class="p">,</span> 
                  <span class="s">'hip'</span><span class="p">,</span> <span class="s">'thigh'</span><span class="p">,</span> <span class="s">'knee'</span><span class="p">,</span> <span class="s">'ankle'</span><span class="p">,</span> <span class="s">'biceps'</span><span class="p">,</span> <span class="s">'forearm'</span><span class="p">,</span> 
@@ -530,7 +522,7 @@ Mean absolute error: 3.302
 
 <p><img src="/assets/output_26_0.png" alt="png" /></p>
 
-<p>We can see here that abdomen circumference is always a strong predictor. As $\lambda$ gets smaller, the coefficient for height becomes non-zero, then wrist circumference and age. I’m going to use these four features for my final model. It is reasonable that height and wrist circumference are negatively related to percent body fat. They indicate how long and how thick your bones are, respectively. Also, it seems that as one gets older, the percent body fat increases, holding everything else constant. I’m guessing this is from a change in the distribution of tissues, younger men having more muscle than older men. Now we can build a simpler model using only these features.</p>
+<p>We can see here that abdomen circumference is always a strong predictor. As \(\lambda\) gets smaller, the coefficient for height becomes non-zero, then wrist circumference and age. I’m going to use these four features for my final model. It is reasonable that height and wrist circumference are negatively related to percent body fat. They indicate how long and how thick your bones are, respectively. Also, it seems that as one gets older, the percent body fat increases, holding everything else constant. I’m guessing this is from a change in the distribution of tissues, younger men having more muscle than older men. Now we can build a simpler model using only these features.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s">'height'</span><span class="p">,</span> <span class="s">'age'</span><span class="p">,</span> <span class="s">'abdomen'</span><span class="p">,</span> <span class="s">'wrist'</span><span class="p">]]</span>
 
