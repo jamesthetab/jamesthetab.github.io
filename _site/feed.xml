@@ -6,9 +6,34 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 25 Sep 2016 20:55:57 +0100</pubDate>
-    <lastBuildDate>Sun, 25 Sep 2016 20:55:57 +0100</lastBuildDate>
+    <pubDate>Sun, 25 Sep 2016 21:06:59 +0100</pubDate>
+    <lastBuildDate>Sun, 25 Sep 2016 21:06:59 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Kaggle and SciKit-Learn</title>
+        <description>&lt;p&gt;A few weeks ago a data scientist friend suggested I look at Kaggle.com and tackle some of their machine learning challenges.&lt;/p&gt;
+
+&lt;p&gt;Like all first time users, I began with the Titanic datset, and trying to understand which of the known background about the passengers led to a higher chance on survival. You are provided with around 1500 training cases, where you are told whether passengers survived or not, and have to make a prediction for the reamining 600 test cases. Kaggle have their own tutorials on how to get started and I began by reinterpret these as Jupyter notebooks and posted them on my GitHub.&lt;/p&gt;
+
+&lt;p&gt;I begin by expanding the Kaggle tutorial on how to use &lt;code class=&quot;highlighter-rouge&quot;&gt;NumPy&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;CSV&lt;/code&gt; packages in “&lt;a href=&quot;https://github.com/jamesthetab/Kaggle/blob/master/1.%20Titanic%20-%20NumPy%20and%20CSV%20packages.ipynb&quot;&gt;1. Titanic - NumPy and CSV packages.ipynb&lt;/a&gt;” - this makes a model based on “train.csv” and applies it to “test.csv”. I output two predictions - a “1a. ModelBasedonGenderAlone.csv”, and then a “1b. ModelBasedonGenderClass.csv”&lt;/p&gt;
+
+&lt;p&gt;I then use a &lt;code class=&quot;highlighter-rouge&quot;&gt;DataFrame&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;Pandas&lt;/code&gt; to streamline this process using &lt;code class=&quot;highlighter-rouge&quot;&gt;Pandas&lt;/code&gt;’s powerful built-in tools in “&lt;a href=&quot;https://github.com/jamesthetab/Kaggle/blob/master/2.%20Titanic%20-%20Pandas%20.ipynb&quot;&gt;2. Titanic - Pandas .ipynb&lt;/a&gt;”. I repeat the ideas of my NumPy model to produce “2. genderclassmodel-pandas.csv”.&lt;/p&gt;
+
+&lt;p&gt;I then analyse the data using ML in “3. Titanic - Random Forests.ipynb” and work in terms of &lt;code class=&quot;highlighter-rouge&quot;&gt;Random Forests&lt;/code&gt; using the &lt;code class=&quot;highlighter-rouge&quot;&gt;scikit-learn&lt;/code&gt; package to produce “&lt;a href=&quot;https://github.com/jamesthetab/Kaggle/blob/master/3.%20Titanic%20-%20Random%20Forests.ipynb&quot;&gt;3. FamSizeAgeClassForest.csv&lt;/a&gt;”.&lt;/p&gt;
+
+&lt;p&gt;I look forward to going deeper into machine lerning using these examples over the coming weeks.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 25 Sep 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/09/25/Kaggle-and-SciKit-Learn.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/09/25/Kaggle-and-SciKit-Learn.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Autograd Package</title>
@@ -851,82 +876,6 @@ There are 143 Happy numbers between 1 and 1000
         <pubDate>Fri, 10 Jun 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/06/10/Euclid-the-game.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/10/Euclid-the-game.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Project Euler Geocaching Cambridge</title>
-        <description>&lt;p&gt;A couple of years ago I used the &lt;a href=&quot;https://projecteuler.net&quot;&gt;Project:Euler&lt;/a&gt; challenges as a stimulus/introduction to&lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt;. They were good at teaching the basics, but the motivation camr from solving quite geeky maths challenges. I discovered last summer that these had been used as the basis for a series of “mystery” &lt;a href=&quot;https://www.geocaching.com/play&quot;&gt;Geocaches&lt;/a&gt; around Cambridge, UK.&lt;/p&gt;
-
-&lt;p&gt;The cool idea is that these &lt;a href=&quot;https://www.geocaching.com/bookmarks/view.aspx?guid=efc9ca64-3d99-4d32-b2ef-47699f7b7651&quot;&gt;special GeoCaches&lt;/a&gt; require you to write pretty much the same code as for the Euler Challenges, apply the code to some specific values which return a number which is then used to generate co-ordinates (a checker is included on the site to avoid wild goose chases). When I set these as homework, the submission was just asking for a photo of the student with the GeoCache!&lt;/p&gt;
-
-&lt;p&gt;Let’s take a look at the first Project:Euler challenge.&lt;/p&gt;
-
-&lt;h1 id=&quot;multiples-of-3-and-5---problem-1httpsprojecteulernetproblem1&quot;&gt;Multiples of 3 and 5 - &lt;a href=&quot;https://projecteuler.net/problem=1&quot;&gt;Problem 1&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;&lt;em&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;The sum of these multiples is 23.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Find the sum of all the multiples of 3 or 5 below 1000.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;We might approach the problem using &lt;code class=&quot;highlighter-rouge&quot;&gt;Swift&lt;/code&gt; code as follows (using a &lt;code class=&quot;highlighter-rouge&quot;&gt;Playground&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;XCode&lt;/code&gt;):&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;cp&quot;&gt;#=&amp;gt; prints &#39;234168&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The first Project:Euler inspired Geocahe  introduced as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;If we list all the natural numbers below 10 that are divisible by 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Define f(n) as the sum of the multiples of 3 and 5 which are less than n. Thus we can write:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;f(10) = 23.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Then N = f(4720) + f(240) + f(77),&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;and E = f(175) + f(10).&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4720&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;240&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;77&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;175&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;N =&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;E =&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;cp&quot;&gt;#=&amp;gt; prints &#39;N = 5212178, E = 7141&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This translates as the the co-ordinates N 52°12.178 and E 00°07.141. Which we can enter into the Geochecker for confirmation and discover a location near my PhD advisor’s rooms in Corpus!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/GCCC.jpg&quot; alt=&quot;alt text&quot; title=&quot;I like to Cache!&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 06 Jun 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/06/Project-Euler-Geocaching-Cambridge.html</guid>
         
         
         <category>jekyll</category>
