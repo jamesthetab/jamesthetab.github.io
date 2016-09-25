@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Autograd Package"
-date:   2016-08-29 20:19:28 +0100
+date:   2016-09-11 20:19:28 +0100
 categories: jekyll update
 ---
 
