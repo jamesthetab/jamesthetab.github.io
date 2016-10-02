@@ -6,8 +6,8 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 02 Oct 2016 20:49:23 +0100</pubDate>
-    <lastBuildDate>Sun, 02 Oct 2016 20:49:23 +0100</lastBuildDate>
+    <pubDate>Sun, 02 Oct 2016 20:52:10 +0100</pubDate>
+    <lastBuildDate>Sun, 02 Oct 2016 20:52:10 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -24,9 +24,9 @@
   &lt;p&gt;&lt;img src=&quot;/assets/OddsSquares.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p&gt;I was very keen to demonstrate the scalability of Swift to the students, and so then shared heavily annotated code from WWDC 2016 which can control a robot from the iPad. I picked out the now familiar loop and functions, and then took charge of the &lt;a href=&quot;http://www.sphero.com/sprk-plus&quot;&gt;SPRK+&lt;/a&gt; robot. This created a real buzz in the room. The idea that we are doing “proper coding”, the language of Apps and Hackers resonated.&lt;/p&gt;
+&lt;p&gt;I was very keen to demonstrate the scalability of Swift to the students, and so then shared heavily annotated code from WWDC 2016 which can control a robot from the iPad. I picked out the now familiar loop and functions, and then took charge of the &lt;a href=&quot;http://www.sphero.com/sprk-plus&quot;&gt;SPRK+&lt;/a&gt; robot. This created a real buzz in the room. The idea that we are doing “proper coding”, the language of Apps and Hackers, resonated.&lt;/p&gt;
 
-&lt;p&gt;To bring back to mathematics I shared one of the jewels of arithmetic, Euler’s formula, solving the Basel Problem, and giving a power series converging to Pi:&lt;/p&gt;
+&lt;p&gt;To bring the session back to mathematics I shared one of the jewels of arithmetic, Euler’s formula, solving the Basel Problem, and giving a power series converging to Pi:&lt;/p&gt;
 
 &lt;div style=&quot;text-align:center&quot;&gt;
   &lt;p&gt;&lt;img src=&quot;/assets/eqn1.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
@@ -44,7 +44,7 @@
   &lt;p&gt;&lt;img src=&quot;/assets/eqn3.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p&gt;This was implemented using the code below. The “quick graph preview”, within playgrounds, gave a powerful and compelling visualisation of the asymptotic approach to Pi.&lt;/p&gt;
+&lt;p&gt;This was implemented using the code below. The “quick graph preview”, all within Playgrounds, gave a powerful and compelling visualisation of the asymptotic approach to Pi.&lt;/p&gt;
 
 &lt;div style=&quot;text-align:center&quot;&gt;
   &lt;p&gt;&lt;img src=&quot;/assets/eqn4.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;

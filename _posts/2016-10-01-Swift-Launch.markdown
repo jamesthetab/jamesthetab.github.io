@@ -17,9 +17,9 @@ We then modified our loop to add odd numbers. It seems the sum of odd numbers yi
 ![png](/assets/OddsSquares.png)
 </div>
 
-I was very keen to demonstrate the scalability of Swift to the students, and so then shared heavily annotated code from WWDC 2016 which can control a robot from the iPad. I picked out the now familiar loop and functions, and then took charge of the [SPRK+](http://www.sphero.com/sprk-plus) robot. This created a real buzz in the room. The idea that we are doing “proper coding”, the language of Apps and Hackers resonated.
+I was very keen to demonstrate the scalability of Swift to the students, and so then shared heavily annotated code from WWDC 2016 which can control a robot from the iPad. I picked out the now familiar loop and functions, and then took charge of the [SPRK+](http://www.sphero.com/sprk-plus) robot. This created a real buzz in the room. The idea that we are doing “proper coding”, the language of Apps and Hackers, resonated.
 
-To bring back to mathematics I shared one of the jewels of arithmetic, Euler’s formula, solving the Basel Problem, and giving a power series converging to Pi:
+To bring the session back to mathematics I shared one of the jewels of arithmetic, Euler’s formula, solving the Basel Problem, and giving a power series converging to Pi:
 
 <div style="text-align:center" markdown="1">
 ![png](/assets/eqn1.png)
@@ -37,7 +37,7 @@ Or, as a limit we can work with,
 ![png](/assets/eqn3.png)
 </div>
 
-This was implemented using the code below. The “quick graph preview”, within playgrounds, gave a powerful and compelling visualisation of the asymptotic approach to Pi.
+This was implemented using the code below. The “quick graph preview”, all within Playgrounds, gave a powerful and compelling visualisation of the asymptotic approach to Pi.
 
 <div style="text-align:center" markdown="1">
 ![png](/assets/eqn4.png)
