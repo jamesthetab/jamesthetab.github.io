@@ -6,9 +6,129 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 13 Oct 2016 21:47:15 +0100</pubDate>
-    <lastBuildDate>Thu, 13 Oct 2016 21:47:15 +0100</lastBuildDate>
+    <pubDate>Fri, 14 Oct 2016 22:20:10 +0100</pubDate>
+    <lastBuildDate>Fri, 14 Oct 2016 22:20:10 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Bachet&#39;s Duplication Formula</title>
+        <description>&lt;h2 id=&quot;bachets-equation-and-geometry&quot;&gt;Bachet’s Equation and Geometry&lt;/h2&gt;
+
+&lt;p&gt;Today’s blog entry concentrates on Diophantine Equations — problems posed in terms of whole numbers, and connected problems over the rationals.  Typically these problems are very easy to understand but difficult to solve.  Their solution often involves leaving the safe world of the integers and using tools and techniques from other areas of mathematics before “projecting” the answer back into whole numbers.  The example I’m going to describe today will use ideas from algebra and geometry.&lt;/p&gt;
+
+&lt;p&gt;Fix some integer &lt;script type=&quot;math/tex&quot;&gt;c&lt;/script&gt;.  What are the rational solutions of the equation&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;y^2 - x^3 = c        \,\,\,\,     (\star)&lt;/script&gt;
+
+&lt;p&gt;By rational solution, I allow &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; to be fractions, but not arbitrary reals.  So we are asking for the difference between a square and a cube to be a certain fixed integer.  This is known as Bachet‘s equation, and we will see that its Geometric interpretation is the key to generating solutions.&lt;/p&gt;
+
+&lt;p&gt;An amazing property of this equation is the existence of a so-called Duplication Formula.  Discovered by Bachet in &lt;script type=&quot;math/tex&quot;&gt;1621&lt;/script&gt;, it states that:&lt;/p&gt;
+
+&lt;h2 id=&quot;theorem-bachet&quot;&gt;Theorem: Bachet&lt;/h2&gt;
+
+&lt;p&gt;If &lt;script type=&quot;math/tex&quot;&gt;(x,y)&lt;/script&gt; is a solution to &lt;script type=&quot;math/tex&quot;&gt;(\star)&lt;/script&gt; with &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; rational, then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left(\frac{x^4-8cx}{4y^2},\frac{-x^6-20cx^3+8c^2}{8y^3}\right)&lt;/script&gt;
+
+&lt;p&gt;is another solution.&lt;/p&gt;
+
+&lt;p&gt;That is, if we know one solution then we can build another one, by simply applying the duplication formula.&lt;/p&gt;
+
+&lt;p&gt;Notice that verification of this formula is easy, we just plug this expression into Bachet’s equation &lt;script type=&quot;math/tex&quot;&gt;(\star)&lt;/script&gt; and check it reduces down to the original statement that &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; satisfy &lt;script type=&quot;math/tex&quot;&gt;(\star)&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;But how did anyone come up with this formula?&lt;/p&gt;
+
+&lt;p&gt;Critically, Bachet’s equation is not linear (it contains higher powers of variables — it is not expressible as a combination of xs and ys — geometrically it does not correspond to a straight line).  In Bezout’s equation (which is linear), if we have one solution &lt;script type=&quot;math/tex&quot;&gt;(X,Y)&lt;/script&gt; then we can symmetrically tweak the two variables to generate another solution: if &lt;script type=&quot;math/tex&quot;&gt;aX+bY = c&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;a(X+b)+ b(Y-a) = c&lt;/script&gt; and so &lt;script type=&quot;math/tex&quot;&gt;(X+b, Y-a)&lt;/script&gt; is also a solution.&lt;/p&gt;
+
+&lt;p&gt;It seems that Bachet made a guess, an approximation to another solution, and then improved this guess using an iterative method until he reached the duplication formula, but this does not give any intuition on why this formula should work, and purely as a piece of algebra it remains mysterious.&lt;/p&gt;
+
+&lt;h2 id=&quot;example-y2-x3---2&quot;&gt;Example: &lt;script type=&quot;math/tex&quot;&gt;y^2-x^3 = -2&lt;/script&gt;&lt;/h2&gt;
+
+&lt;p&gt;Now let’s work through an example to see how powerful this formula can be.   It’s not too hard to spot the first solution to this equation: &lt;script type=&quot;math/tex&quot;&gt;(3,5)&lt;/script&gt; is a solution (because &lt;script type=&quot;math/tex&quot;&gt;5^2 - 3^3 = -2&lt;/script&gt;).  Then, using the duplication formula,&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;(3,5)&lt;/script&gt; is a solution;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\left(\frac{129}{10^2},\frac{-38^3}{10^3}\right)&lt;/script&gt; is a solution;&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\left(\frac{2340922881}{7660^2},\frac{113259286337292}{7660^3}\right)&lt;/script&gt; is a solution;&lt;/p&gt;
+
+&lt;p&gt;…
+Already, these solutions are getting very complicated, and it’s unlikely a super-computer would stumble across such a rational solution, even more unlikely would be Bachet spotting these during his work in the &lt;script type=&quot;math/tex&quot;&gt;17&lt;/script&gt;th Century.&lt;/p&gt;
+
+&lt;p&gt;I hope this convinces you that it is really a very powerful formula, but why does it work?  Events later in the 17th century give us a different way to approach the problem which is far more elegant — the invention by Descartes (or at least the user-friendly notation) of coordinate geometry.&lt;/p&gt;
+
+&lt;p&gt;We are all happy with how Cartesian Geometry allows geometric problems to be solved algebraically — we have been doing this since we used Pythagoras to calculate distances between points in the plane, but of interest here is how algebraic problems can benefit from Geometric intuition.&lt;/p&gt;
+
+&lt;p&gt;For real &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;, Bachet’s Equation, &lt;script type=&quot;math/tex&quot;&gt;(\star)&lt;/script&gt;, corresponds to a curve in the plane, and rational solutions correspond to the points where both coordinates are rational.&lt;/p&gt;
+
+&lt;p&gt;We now make a simple construction which explains the duplication formula:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/PQ.jpg&quot; alt=&quot;alt text&quot; title=&quot;Tangent to the Curve&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;bachets-equation&quot;&gt;Bachet’s equation&lt;/h2&gt;
+
+&lt;p&gt;For a given solution &lt;script type=&quot;math/tex&quot;&gt;P = (x,y)&lt;/script&gt;, draw the tangent to the curve at &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;.  For &lt;script type=&quot;math/tex&quot;&gt;y\neq 0&lt;/script&gt;, substituting the equation of the tangent, &lt;script type=&quot;math/tex&quot;&gt;Y = mX = c&lt;/script&gt; into the cubic (&lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt;rd power) curve gives a cubic equation &lt;script type=&quot;math/tex&quot;&gt;(#)&lt;/script&gt; in &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;.  This leads to &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt; (possibly repeated) solutions for the &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;-coordinate (and corresponding &lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt;-coordinate) of the point of intersection.&lt;/p&gt;
+
+&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;Q=(\alpha,\beta)&lt;/script&gt;. Since the tangent intersects twice at &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;, we see that the solutions of &lt;script type=&quot;math/tex&quot;&gt;(#)&lt;/script&gt; are &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Question What goes wrong for &lt;script type=&quot;math/tex&quot;&gt;y=0&lt;/script&gt;?&lt;/p&gt;
+
+&lt;p&gt;Claim: &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; is also a rational point, and its coordinates are given by the duplication formula.&lt;/p&gt;
+
+&lt;p&gt;Define a curve to be rational if all its coefficients are.  We begin by noting that the gradient of the tangent will be rational, and that it passes through the rational point &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;.  So the tangent is a rational line, and the point &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; is the intersection of a rational curve and a rational line.&lt;/p&gt;
+
+&lt;p&gt;Warning: this is not enough to guarantee that &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt; itself is rational.  For example, consider the intersection of the Rational Line &lt;script type=&quot;math/tex&quot;&gt;y=2&lt;/script&gt; and the Rational Curve &lt;script type=&quot;math/tex&quot;&gt;y=x^2&lt;/script&gt;.  The intersection is not a point with rational coordinates.&lt;/p&gt;
+
+&lt;p&gt;After substituting for &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; in the cubic curve (using the equation of the tangent line) we are left with a rational cubic &lt;script type=&quot;math/tex&quot;&gt;(#)&lt;/script&gt; in the &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;-coordinates corresponding to the three points of intersection.&lt;/p&gt;
+
+&lt;p&gt;Thus, using the relation between roots and coefficients of a polynomial (sometimes called Viète‘s formula), the sum of the three &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;-coordinates is (up to a sign) a quotient of rational coefficients, so the sum of the three &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;-coordinates of intersection is rational.&lt;/p&gt;
+
+&lt;p&gt;But two of these solutions (intersecting &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; twice) are rational, so the third (at &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;) must be rational also.&lt;/p&gt;
+
+&lt;p&gt;Substituting this &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;-coordinate into the rational tangent line gives rational &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;-coordinate for &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;This proves the first part of the claim.&lt;/p&gt;
+
+&lt;p&gt;You might like to check that this new point recovers the Duplication formula.  Remember to use the trick summing the three solutions of the cubic.  The alternative, using the two solutions we know to get a quadratic factor which we then factorise out of the cubic, can get messy.  Hints below.&lt;/p&gt;
+
+&lt;p&gt;In the language of elliptic curves, given a rational point &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; we are considering the new rational point &lt;script type=&quot;math/tex&quot;&gt;-2P&lt;/script&gt;.   This process never repeats itself (and so infinitely many rational points may be generated in this way).  If &lt;script type=&quot;math/tex&quot;&gt;(-2)^s P = (-2)^t P&lt;/script&gt; for some &lt;script type=&quot;math/tex&quot;&gt;s,t&lt;/script&gt;, then, subtracting, &lt;script type=&quot;math/tex&quot;&gt;nP=0&lt;/script&gt; for some &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; (where &lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt; denotes the point at infinity).  Such &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; are known as torsion elements.  The Nagell-Lutz theorem tells us that torsion points with rational coordinates must then have integral coordinates.  We can now use unique factorisation of natural numbers to perform “local calculations” (considering remainders modulo different primes p) to show there are no torsion points with integral coordinates on the curve.&lt;/p&gt;
+
+&lt;p&gt;We do have torsion amongst points with real coordinates, though.  For &lt;script type=&quot;math/tex&quot;&gt;y=0, P=(-\sqrt[3]{c},0)&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; is of order &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt;: &lt;script type=&quot;math/tex&quot;&gt;2P=0&lt;/script&gt;.  Also, for &lt;script type=&quot;math/tex&quot;&gt;x=0&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;P=(0, \pm \sqrt{c})&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; is of order &lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt;: &lt;script type=&quot;math/tex&quot;&gt;3P=0&lt;/script&gt;.  Reinterpreting as &lt;script type=&quot;math/tex&quot;&gt;-2P=0&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;(-2P = P)&lt;/script&gt; respectively, can you explain these results geometrically?&lt;/p&gt;
+
+&lt;p&gt;We have shown that if there is a single rational solution, then in fact there are infinitely many.  But there are other related questions to think about.&lt;/p&gt;
+
+&lt;p&gt;Are there any rational solutions at all?  Or could the curve meander around all the rational points of &lt;script type=&quot;math/tex&quot;&gt;\mathbb{R}^2&lt;/script&gt;, as the Fermat curve &lt;script type=&quot;math/tex&quot;&gt;x^3+y^3 = 1&lt;/script&gt; does?  (Fermat’s last theorem says that the only rational points on the curve &lt;script type=&quot;math/tex&quot;&gt;x^n + y^n = 1&lt;/script&gt; are &lt;script type=&quot;math/tex&quot;&gt;(\pm 1, 0), (0,\pm 1)&lt;/script&gt; for even &lt;script type=&quot;math/tex&quot;&gt;n \geq 4&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;(0,1), (1,0)&lt;/script&gt; for odd &lt;script type=&quot;math/tex&quot;&gt;n \geq 3&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;What about working over the integers, are there any integer solutions for a given c?&lt;/p&gt;
+
+&lt;p&gt;If there is a solution, are there infinitely many?  (Notice that the duplication formula only returns a rational solution even if you start with integers.)&lt;/p&gt;
+
+&lt;p&gt;These questions are explored in the excellent book Rational Points on Elliptic Curves by Silverman and Tate, published by Springer UTM in 1992.  (The relevant part is available on Google books.)&lt;/p&gt;
+
+&lt;h2 id=&quot;hints&quot;&gt;Hints&lt;/h2&gt;
+
+&lt;p&gt;For rational point &lt;script type=&quot;math/tex&quot;&gt;P= (x,y)&lt;/script&gt; on curve &lt;script type=&quot;math/tex&quot;&gt;y^2 = c+x^3&lt;/script&gt;, gradient at &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt; is &lt;script type=&quot;math/tex&quot;&gt;\frac{dy}{dx} = \frac{3x^2}{2y}&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Equation of tangent &lt;script type=&quot;math/tex&quot;&gt;Y = X.\frac{3x^2}{2y} + (y-\frac{3x^3}{2y})&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Substituting, &lt;script type=&quot;math/tex&quot;&gt;Y^2=X^2.\frac{9x^4}{4y^2}+X.\frac{3x^2}{y}&lt;/script&gt;. &lt;script type=&quot;math/tex&quot;&gt;(y-\frac{3x^3}{2y}) + (y^2-3x^3+\frac{9x^6}{4y^2})=c+X^3&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Intersects at &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;Q= (\alpha,\beta)&lt;/script&gt;, thus sum of roots:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x+x+\alpha=\frac{9x^4}{4y^2}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha = \frac{x^4-8xc}{4y^2}.&lt;/script&gt;
+</description>
+        <pubDate>Fri, 14 Oct 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/10/14/Bachet's-Duplication-Formula.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/14/Bachet's-Duplication-Formula.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Tunnell&#39;s Algorithm</title>
@@ -1056,28 +1176,6 @@ There are 143 Happy numbers between 1 and 1000
         <pubDate>Tue, 05 Jul 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/07/05/Overselling-of-Educational-Technology.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/07/05/Overselling-of-Educational-Technology.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Formatting Tools</title>
-        <description>&lt;p&gt;As I build up this Blog I expect the mathematical content to become more involved, and I am excited to use Mermaid, a typesetting programme for flow diagrams and Gantt charts.&lt;/p&gt;
-
-&lt;p&gt;I’ve incorporated MathJax to allow me to use LaTex commands to create beautifully typeset mathematics. Either as standalone equations. Pythagoras’ Theorem states that in a right triangle with hypotenuse \(c\), and other sides \(a\) and \(b\):&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^2 + b^2 = c^2&lt;/script&gt;
-
-&lt;p&gt;I can also set up inline math such as \(e^{i \pi} +1 = 0\).&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 18 Jun 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/06/18/Formatting-Tools.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/06/18/Formatting-Tools.html</guid>
         
         
         <category>jekyll</category>
