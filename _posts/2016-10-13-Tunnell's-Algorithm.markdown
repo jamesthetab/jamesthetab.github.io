@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Tunnell's Algorithm"
-date:   2016-10-13 20:19:28 +0100
+date:   2016-10-5 20:19:28 +0100
 categories: jekyll update
 ---
 

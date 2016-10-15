@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bachet's Duplication Formula"
-date:   2016-10-14 20:19:28 +0100
+date:   2016-10-10 20:19:28 +0100
 categories: jekyll update
 ---
 

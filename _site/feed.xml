@@ -6,9 +6,30 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 14 Oct 2016 22:20:10 +0100</pubDate>
-    <lastBuildDate>Fri, 14 Oct 2016 22:20:10 +0100</lastBuildDate>
+    <pubDate>Sat, 15 Oct 2016 13:06:50 +0100</pubDate>
+    <lastBuildDate>Sat, 15 Oct 2016 13:06:50 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Computational Thinking</title>
+        <description>&lt;p&gt;I’ve had the pleasure of hearing Conrad Wolfram speak on a couple of occasions, and I love his drive for the curriculum to be about solving real world problems (now that code on our laptops and tablets can equally well handle the stripped down question of a wobbling children’s toy or plotting a rocket’s path to the moon as it interacts with all the other planets and star in a solar system). I have been frustrated by his interpretation of coding as a capstone activity, “If you understand something then you can code it.”, and prefer to emphasize the discovery that is possible through coding and experimenting with 1000s of cases rather than dozens on a calculator (or a handful in my head).&lt;/p&gt;
+
+&lt;p&gt;Wolfram has responsed to &lt;a href=&quot;http://www.conradwolfram.com/home/anchoring-computational-thinking-in-todays-curriculum&quot;&gt;changes in the curriculum&lt;/a&gt;, and it is a good read. I am struck by his definition as computational thinking as a cycle of “Define, Translate, Compute, Interpret” as being essentially the behaviour of a skilled mathematician!&lt;/p&gt;
+
+&lt;p&gt;It is also worth looking at the comments in response to this article, where the case is made that CT “…  is more than problem solving (and perspective which you touch on). It includes a way of understanding that is different from what came before. It involves seeing the world in terms of communicating interacting processes. It provides a different way of understanding phenomena as diverse as natural selection, markets, ecosystems, intelligence, and maybe also consciousness.”.&lt;/p&gt;
+
+&lt;p&gt;Perhaps I have been too quick to adapt CT to my view of how a trained mathemo behaves! I recommend Papert’s paper on &lt;a href=&quot;https://llk.media.mit.edu/courses/readings/Papert-Big-Idea.pdf&quot;&gt;powerful ideas&lt;/a&gt; to address this imbalance in schools.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 14 Oct 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/10/14/Computational-Thinking.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/14/Computational-Thinking.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Bachet&#39;s Duplication Formula</title>
@@ -119,9 +140,9 @@ Already, these solutions are getting very complicated, and it’s unlikely a sup
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha = \frac{x^4-8xc}{4y^2}.&lt;/script&gt;
 </description>
-        <pubDate>Fri, 14 Oct 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/10/14/Bachet's-Duplication-Formula.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/14/Bachet's-Duplication-Formula.html</guid>
+        <pubDate>Mon, 10 Oct 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/10/10/Bachet's-Duplication-Formula.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/10/Bachet's-Duplication-Formula.html</guid>
         
         
         <category>jekyll</category>
@@ -311,9 +332,9 @@ Already, these solutions are getting very complicated, and it’s unlikely a sup
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
-        <pubDate>Thu, 13 Oct 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/10/13/Tunnell's-Algorithm.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/13/Tunnell's-Algorithm.html</guid>
+        <pubDate>Wed, 05 Oct 2016 20:19:28 +0100</pubDate>
+        <link>http://jamesthetab.github.io/jekyll/update/2016/10/05/Tunnell's-Algorithm.html</link>
+        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/10/05/Tunnell's-Algorithm.html</guid>
         
         
         <category>jekyll</category>
@@ -1158,24 +1179,6 @@ There are 143 Happy numbers between 1 and 1000
         <pubDate>Wed, 13 Jul 2016 20:19:28 +0100</pubDate>
         <link>http://jamesthetab.github.io/jekyll/update/2016/07/13/Overlapping-Mathematicians.html</link>
         <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/07/13/Overlapping-Mathematicians.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>The Overselling of Educational Technology</title>
-        <description>&lt;p&gt;A friend shared with me another withering commentry on a one size fits all approach to ed tech, and how without careful curricular planning this can result in the loss of &lt;a href=&quot;https://www.edsurge.com/news/2016-03-16-the-overselling-of-education-technology&quot;&gt;curiosity in the classroom&lt;/a&gt;. The piece is written by Alfie Kohn, an education commentator who I knew through his criticism of competition and reward based learning. His website points to a Time magazine article which describes him as “perhaps the country’s most outspoken critic of education’s fixation on grades and test scores.”&lt;/p&gt;
-
-&lt;p&gt;She went on to share a much brighter piece with me on &lt;a href=&quot;https://larrycuban.wordpress.com/2016/07/05/how-to-do-adaptive-learning-right-keith-devlin-and-randy-weiner/&quot;&gt;How To Do Adaptive Learning Right&lt;/a&gt;, by an academic, Keith Devlin, and a Montessori educator, Randy Weiner, who both now work in ed tech. They talk lucidly about breaking down the symbolic barrier which math puts up, and how adaptive learning can transofrm each educational trajectory, but their focus on “Experience over Knowledge” ressonated the most. I have spent a lot of time recently trying to convince students (and colleagues) that math is can be an experimental science, where our experiments are mind games for small examples, coding allows us to access larger examples, and once we have built up our intuition for what is happening at a deeper level we can then attempt an absolute proof which handles all cases simultaneously. Devlin and Weiner connect with this idea through “Mathematics is primarily something you do, not something you know”.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 05 Jul 2016 20:19:28 +0100</pubDate>
-        <link>http://jamesthetab.github.io/jekyll/update/2016/07/05/Overselling-of-Educational-Technology.html</link>
-        <guid isPermaLink="true">http://jamesthetab.github.io/jekyll/update/2016/07/05/Overselling-of-Educational-Technology.html</guid>
         
         
         <category>jekyll</category>
