@@ -6,13 +6,13 @@
 </description>
     <link>http://jamesthetab.github.io/</link>
     <atom:link href="http://jamesthetab.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Oct 2016 23:28:54 +0100</pubDate>
-    <lastBuildDate>Thu, 20 Oct 2016 23:28:54 +0100</lastBuildDate>
+    <pubDate>Thu, 20 Oct 2016 23:32:05 +0100</pubDate>
+    <lastBuildDate>Thu, 20 Oct 2016 23:32:05 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>Exploring a Large Data Set</title>
-        <description>&lt;h2 id=&quot;earthquakes-and-maths&quot;&gt;Earthquakes and Maths&lt;/h2&gt;
+        <description>&lt;h2 id=&quot;earthquakes-and-maps&quot;&gt;Earthquakes and Maps&lt;/h2&gt;
 
 &lt;p&gt;The US government maintains a set of live feeds of earthquake-related data from recent seismic events. You can choose to examine data from the last hour, through the last thirty days. You can choose to examine data from events that have a variety of magnitudes. For this project, we’ll use a dataset that contains all seismic events over the last seven days, which have a magnitude of 1.0 or greater.&lt;/p&gt;
 

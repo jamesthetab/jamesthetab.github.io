@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 
-Earthquakes and Maths
+Earthquakes and Maps
 --------------------------------
 
 
