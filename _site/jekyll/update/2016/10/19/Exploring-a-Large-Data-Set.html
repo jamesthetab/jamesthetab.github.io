@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Exploring a Large Data Set</title>
+  <meta name="description" content="Earthquakes and Maths">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/10/19/Exploring-a-Large-Data-Set.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">J. S. Cooper - A Curious Mathematician</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Exploring a Large Data Set</h1>
+    <p class="post-meta"><time datetime="2016-10-19T20:19:28+01:00" itemprop="datePublished">Oct 19, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="earthquakes-and-maths">Earthquakes and Maths</h2>
+
+<p>The US government maintains a set of live feeds of earthquake-related data from recent seismic events. You can choose to examine data from the last hour, through the last thirty days. You can choose to examine data from events that have a variety of magnitudes. For this project, we’ll use a dataset that contains all seismic events over the last seven days, which have a magnitude of 1.0 or greater.</p>
+
+<p>My ambition with this project is to import the data and then output (colour coded) points onto a globe giving the location and intensity of quakes! There are blogs on line which explore this already, but I am excited to add the complexity that rather than manually download the data I use Pandas to download from a url maintained by the US Goverment, so we are working with “live” data.</p>
+
+<p>To follow this project go to the <a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php">USGS source</a> for csv files of earthquake data and download the file “M1.0+ Earthquakes” under the “Past 7 Days” header.</p>
+
+<p>Alternatively, here is a <a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv">direct link</a> to that file. This data is updated every 5 minutes!</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Before we begin we must import the Basemap package which will allow us to work on globes.</p>
+
+<p>In the terminal window type
+<code class="highlighter-rouge">conda install -c anaconda basemap=1.0.7</code></p>
+
+<p>Hit enter and then <code class="highlighter-rouge">y</code> to proceed.</p>
+
+<p>Now reopen a Jupyter Notebook and we are ready to proceed. I will cummulative build up the code. Firstly, we import packages and ask that outputs are displayed inline.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</code></pre>
+</div>
+
+<p>Next we draw a basic map centred on North America, complete with lines of latitude and longitude.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="c"># make sure the value of resolution is a lowercase L,</span>
+<span class="c">#  for 'low', not a numeral 1</span>
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'ortho'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">()</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_4_0.png" alt="png" /></p>
+
+<p>Now we fill in the oceans and lakes and change the focus to the UK.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'ortho'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_6_0.png" alt="png" /></p>
+
+<p>I now experiment with different projections, changing ‘'’ortho’’’ to ‘'’robin’’’, ‘'’hammer’’’, and ‘'’vandg’’’.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_8_0.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'hammer'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_9_0.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'vandg'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_10_0.png" alt="png" /></p>
+
+<p>Next I zoom on a specific area by giving the coordinates of the bottom left and top right point I’m interested in.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> 
+                 <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mf">136.25</span><span class="p">,</span> <span class="n">llcrnrlat</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span>
+    <span class="n">urcrnrlon</span><span class="o">=-</span><span class="mf">134.25</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mf">57.75</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_12_0.png" alt="png" /></p>
+
+<p>I now turn the resolution to high (‘h’), and make small island appear by reducing the cut off area from 1000 to 0.1 km^2.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                 <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mf">136.25</span><span class="p">,</span> <span class="n">llcrnrlat</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span>
+    <span class="n">urcrnrlon</span><span class="o">=-</span><span class="mf">134.25</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mf">57.75</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_144_0.png" alt="png" /></p>
+
+<p>I now illusatrate how to add a point on the map by manually giving coordinates.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                 <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mf">136.25</span><span class="p">,</span> <span class="n">llcrnrlat</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span>
+    <span class="n">urcrnrlon</span><span class="o">=-</span><span class="mf">134.25</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mf">57.75</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">135.3318</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">57.0799</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">my_map</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_16_0.png" alt="png" /></p>
+
+<p>I can add more points and add labels.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+              <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                 <span class="n">llcrnrlon</span><span class="o">=-</span><span class="mf">136.25</span><span class="p">,</span> <span class="n">llcrnrlat</span><span class="o">=</span><span class="mi">56</span><span class="p">,</span>
+    <span class="n">urcrnrlon</span><span class="o">=-</span><span class="mf">134.25</span><span class="p">,</span> <span class="n">urcrnrlat</span><span class="o">=</span><span class="mf">57.75</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'coral'</span><span class="p">,</span><span class="n">lake_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">(</span><span class="n">fill_color</span><span class="o">=</span><span class="s">'aqua'</span><span class="p">)</span>
+ 
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="n">lons</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">135.3318</span><span class="p">,</span> <span class="o">-</span><span class="mf">134.8331</span><span class="p">,</span> <span class="o">-</span><span class="mf">134.6572</span><span class="p">]</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="p">[</span><span class="mf">57.0799</span><span class="p">,</span> <span class="mf">57.0894</span><span class="p">,</span> <span class="mf">56.2399</span><span class="p">]</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">my_map</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
+<span class="n">my_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ 
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Sitka'</span><span class="p">,</span> <span class="s">'Baranof Warm Springs'</span><span class="p">,</span> <span class="s">'Port Alexander'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">xpt</span><span class="p">,</span> <span class="n">ypt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xpt</span><span class="p">,</span> <span class="n">ypt</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_18_0.png" alt="png" /></p>
+
+<p>The real power of this script is that using Pandas I can import from the URL and get “live” data and pick out the columns I need.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<p>It is now easy to convert these DataFrames into lists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">magnitudes</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="n">lats</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"latitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"longitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">magnitudess</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"mag"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Display the first 5 lats, lons, and mags.</span>
+<span class="k">print</span> <span class="s">'lats'</span><span class="p">,</span> <span class="n">lats</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'lons'</span><span class="p">,</span> <span class="n">lons</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">'magnitudes'</span><span class="p">,</span> <span class="n">magnitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>lats [33.975999999999999, 63.4773, 62.212899999999998, 32.5833333, -9.0645000000000007]
+lons [-117.76100000000001, -154.9709, -145.61279999999999, -116.98883329999998, 123.9038]
+magnitudes []
+</code></pre>
+</div>
+
+<p>Once I have the coordinates as lists it easy to plot the points where eartquakes took place (as above).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># --- Build Map ---</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
+              <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">eq_map</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_25_0.png" alt="png" /></p>
+
+<p>I now consolidate the code into a single cell, and look at scaling the diameter of the plot according to the magnitude of the quake.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
+
+<span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">mags</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="n">lats</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"latitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"longitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"mag"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+<span class="c"># --- Build Map ---</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+ 
+<span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
+              <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">min_marker_size</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="k">for</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">mag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">magnitudes</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">eq_map</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="n">msize</span> <span class="o">=</span> <span class="n">mag</span> <span class="o">*</span> <span class="n">min_marker_size</span>
+    <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">msize</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_27_0.png" alt="png" /></p>
+
+<p>To aid data visualization further I colour code the quakes.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
+
+<span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">mags</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="n">lats</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"latitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"longitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"mag"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+<span class="c"># --- Build Map ---</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">get_marker_color</span><span class="p">(</span><span class="n">magnitude</span><span class="p">):</span>
+    <span class="c"># Returns green for small earthquakes, yellow for moderate</span>
+    <span class="c">#  earthquakes, and red for significant earthquakes.</span>
+    <span class="k">if</span> <span class="n">magnitude</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'go'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">magnitude</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'yo'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'ro'</span><span class="p">)</span>
+ 
+<span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
+              <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">fillcontinents</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">min_marker_size</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="k">for</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">mag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">magnitudes</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">eq_map</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="n">msize</span> <span class="o">=</span> <span class="n">mag</span> <span class="o">*</span> <span class="n">min_marker_size</span>
+    <span class="n">marker_string</span> <span class="o">=</span> <span class="n">get_marker_color</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+    <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker_string</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">msize</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_29_0.png" alt="png" /></p>
+
+<p>Finally, I add a title and then use Nasa’s data to colour the globe (‘'’eq_map.bluemarble()’’’).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
+
+<span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">mags</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="n">lats</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"latitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">lons</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"longitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"mag"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+<span class="c"># --- Build Map ---</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">get_marker_color</span><span class="p">(</span><span class="n">magnitude</span><span class="p">):</span>
+    <span class="c"># Returns green for small earthquakes, yellow for moderate</span>
+    <span class="c">#  earthquakes, and red for significant earthquakes.</span>
+    <span class="k">if</span> <span class="n">magnitude</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'go'</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">magnitude</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'yo'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s">'ro'</span><span class="p">)</span>
+ 
+<span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
+              <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcoastlines</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawcountries</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">bluemarble</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmapboundary</span><span class="p">()</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">eq_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+ 
+<span class="n">min_marker_size</span> <span class="o">=</span> <span class="mf">2.25</span>
+<span class="k">for</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">mag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">magnitudes</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">eq_map</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+    <span class="n">msize</span> <span class="o">=</span> <span class="n">mag</span> <span class="o">*</span> <span class="n">min_marker_size</span>
+    <span class="n">marker_string</span> <span class="o">=</span> <span class="n">get_marker_color</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+    <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker_string</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">msize</span><span class="p">)</span>
+    
+<span class="n">title_string</span> <span class="o">=</span> <span class="s">"Earthquakes of Magnitude 1.0 or Greater</span><span class="se">\n</span><span class="s">"</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title_string</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/output_31_0.png" alt="png" /></p>
+
+<p>Lots of beautiful examples of different ways to present data on these maps are given <a href="http://matplotlib.org/basemap/users/examples.html">here</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">J. S. Cooper - A Curious Mathematician</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+         
+          <li><a href="mailto:jsc42@cantab.net">jsc42@cantab.net</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jamesthetab"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jamesthetab</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/jamesthetab">
+            <span class="icon  icon--twitter">
+             <svg viewBox="0 0 61 61">
+             <path fill="#828282" d="M49.265,4.667H7.145c-2.016,0-3.651,1.596-3.651,3.563v42.613c0,1.966,1.635,3.562,3.651,3.562h42.12   c2.019,0,3.654-1.597,3.654-3.562V8.23C52.919,6.262,51.283,4.667,49.265,4.667z M18.475,46.304h-7.465V23.845h7.465V46.304z    M14.743,20.777h-0.05c-2.504,0-4.124-1.725-4.124-3.88c0-2.203,1.67-3.88,4.223-3.88c2.554,0,4.125,1.677,4.175,3.88   C18.967,19.052,17.345,20.777,14.743,20.777z M45.394,46.304h-7.465V34.286c0-3.018-1.08-5.078-3.781-5.078   c-2.062,0-3.29,1.389-3.831,2.731c-0.197,0.479-0.245,1.149-0.245,1.821v12.543h-7.465c0,0,0.098-20.354,0-22.459h7.465v3.179   c0.992-1.53,2.766-3.709,6.729-3.709c4.911,0,8.594,3.211,8.594,10.11V46.304z"/>
+             </svg>
+            </span>
+            <span class="username">jamesthetab
+            </span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>A place for me to reflect on my experiences of mathematical research, education, coding,  and the search for an engaging career.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+  </body>
+
+</html>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
