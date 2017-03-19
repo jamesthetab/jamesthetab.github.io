@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sorting Algorithms</title>
+  <meta name="description" content="Sharing classroom experience of the excitment code can generate.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2017/02/11/Sorting-Algorithms.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">J. S. Cooper - A Curious Mathematician</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Sorting Algorithms</h1>
+    <p class="post-meta"><time datetime="2017-02-11T19:19:28+00:00" itemprop="datePublished">Feb 11, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Sharing classroom experience of the excitment code can generate.</p>
+
+<h2 id="bubble-sort">1. Bubble Sort</h2>
+
+<p>The class began by learning how to define functions in Python and how to pick out elements of an array to create <code class="highlighter-rouge">swap</code>. Bubble Sort was then a double loop working through the array, sorting pairs, up to <script type="math/tex">n</script> (list length) times.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">):</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+
+<span class="k">def</span> <span class="nf">bubblesort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span> <span class="n">A</span> <span class="p">)</span> <span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span> <span class="n">A</span> <span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="p">):</span>
+                <span class="n">swap</span><span class="p">(</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span>
+</code></pre>
+</div>
+
+<h2 id="quick-sort">2. Quick Sort</h2>
+
+<p>The challenge here, where Quick Sort takes the middle element as a pivot and creates two subsets was to make sure that a single pass, <code class="highlighter-rouge">quicksortsingle</code> always returned three lists. Python’s clever ability to define functions recursively completed the definition (we built up to this by first defining <script type="math/tex">n!</script> in this way).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">quicksortsingle</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>  <span class="c">#select middle object, automatically takes floor</span>
+        <span class="c">#print(pivot)</span>
+        
+        <span class="n">small</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">big</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c">#print(A)</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span>
+        <span class="c">#print(A)</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">small</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">big</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="c">#print(small,pivot,big)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">small</span><span class="p">,</span> <span class="p">[</span><span class="n">pivot</span><span class="p">],</span> <span class="n">big</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">([],[],[])</span>
+
+<span class="k">def</span> <span class="nf">qs</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">A</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">small</span><span class="p">,</span><span class="n">pivot</span><span class="p">,</span><span class="n">big</span><span class="p">)</span> <span class="o">=</span> <span class="n">quicksortsingle</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">qs</span><span class="p">(</span><span class="n">small</span><span class="p">)</span><span class="o">+</span><span class="n">qs</span><span class="p">(</span><span class="n">pivot</span><span class="p">)</span><span class="o">+</span><span class="n">qs</span><span class="p">(</span><span class="n">big</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="built-in-sort">3. Built-in Sort</h2>
+
+<p>Embedded in the language already is a version of Timsort, a hybrid sorting algorithm, derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data. It was invented by Tim Peters in 2002 for use in the Python programming language. The algorithm finds subsets of the data that are already ordered, and uses the subsets to sort the data more efficiently. This is done by merging an identified subset, called a run, with existing runs until certain criteria are fulfilled.</p>
+
+<p>It is accessed using the <code class="highlighter-rouge">sorted(list)</code> command.</p>
+
+<h2 id="examples">4. Examples</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">bubblesort</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">qs</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[2, 6, 3, 4, 8, 1, 12]
+[1, 2, 3, 4, 6, 8, 12]
+[1, 2, 3, 4, 6, 8, 12]
+[1, 2, 3, 4, 6, 8, 12]
+</code></pre>
+</div>
+
+<h2 id="timings-and-complexity">5. Timings and Complexity</h2>
+
+<p>Our next goal was to explore the complexity of algorithms by measuring the time taken, and the factors by which that changed as the list length increased.</p>
+
+<p>The class was shocked that different computers with different processors and memory varied so much in terms of performance!</p>
+
+<p>We began by importing the <code class="highlighter-rouge">timeit</code> module and learning how to take intermediate timings from it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>  
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Hello, world!
+0.000502909222553
+</code></pre>
+</div>
+
+<p>Next, we measured the timings for sorting a short hand written list.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">inta</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="n">bubblesort</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">intb</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="n">qs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Built in Sorted took"</span><span class="p">,</span> <span class="n">inta</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Bubblesort took"</span><span class="p">,</span> <span class="n">intb</span><span class="o">-</span><span class="n">inta</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Quicksort took"</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">intb</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[1, 2, 3, 4, 6, 8, 12]
+[2, 6, 3, 4, 8, 1, 12]
+[1, 2, 3, 4, 6, 8, 12]
+[1, 2, 3, 4, 6, 8, 12]
+[1, 2, 3, 4, 6, 8, 12]
+[1, 2, 3, 6, 8, 12]
+('Built in Sorted took', 9.112838714570026e-05)
+('Bubblesort took', 9.112838714575577e-05)
+('Quicksort took', 9.361653423500815e-05)
+</code></pre>
+</div>
+
+<p>The relative speeds are not yet showing up, and are too dependent on luck for such a short list. We repeated the experiment with a list of length <script type="math/tex">100</script>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">inta</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="n">bubblesort</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">intb</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+<span class="n">qs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Built in Sorted took"</span><span class="p">,</span> <span class="n">inta</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Bubblesort took"</span><span class="p">,</span> <span class="n">intb</span><span class="o">-</span><span class="n">inta</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Quicksort took"</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">intb</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>('Built in Sorted took', 0.0002531651868480367)
+('Bubblesort took', 0.004138037851618037)
+('Quicksort took', 0.0007769123302239223)
+</code></pre>
+</div>
+
+<p>The order is now as we would expect, but luck when picking a single list of length 100 could throw off the stats. We built up a function which measures speed over <script type="math/tex">r</script> repetitions and takes the average. Note that following a neat suggestion from one of my students we decided not to store all the timing values, but instead a running total which allowed us to calculate the average at the end.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">bstime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="c"># n is size of list</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#repetitions</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">r</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+        <span class="n">bubblesort</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="n">r</span>
+    <span class="k">return</span> <span class="n">time</span>
+</code></pre>
+</div>
+
+<h2 id="graphing">6. Graphing</h2>
+
+<p>Although this method now sorted the algorithms it only gave a snapshot of how each was behaving. We discuss implementing the <code class="highlighter-rouge">bstime()</code> function across a range of values and plotting the results. This gave the class an opportunity to learn about <code class="highlighter-rouge">matplotlib</code>, and the important magic function <code class="highlighter-rouge">%matplotlib inline</code> which keeps the output within the Jupyter notebook.</p>
+
+<p>I stepped over list lengths from 1 to 499 and created a list of the corresponding average timings.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">y</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">500</span><span class="p">:</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bstime</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x88a5f98&gt;]
+</code></pre>
+</div>
+
+<p><img src="/assets/output_22_1.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+</code></pre>
+</div>
+
+<p>This appears to be a quadratic curve, <script type="math/tex">O(n^2)</script>, as suggested by theory, but fitting quadratics is hard. Instead we studies the <script type="math/tex">log-log</script> graph, where a linear model of gradient of <script type="math/tex">2</script> would confirm a good model by a single quadratic.</p>
+
+<p>We began by creating new $log$ lists, <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code>, and then plotting the result.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x8af67f0&gt;]
+</code></pre>
+</div>
+
+<p><img src="/assets/output_26_1.png" alt="png" /></p>
+
+<p>This looks to be a fairly good line graph, but relatively few points in the 0-4 <code class="highlighter-rouge">a</code>-range create noise. We can calculate the gradient of line of best fit as follows.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.73429200491
+</code></pre>
+</div>
+
+<p>It makes sense that the graph is less stable for small values, when the linear “error term” is more significant relative to <script type="math/tex">n^2</script>, thus if we are only interesting in picking out the largest power (as the gradient of <script type="math/tex">log-log</script> graph) it is justified to ignore small values, in this case when log(list-length) <script type="math/tex">% <![CDATA[
+<4 %]]></script>, list-length <script type="math/tex">% <![CDATA[
+<60 %]]></script>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">60</span><span class="p">:]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">60</span><span class="p">:]</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x90975f8&gt;]
+</code></pre>
+</div>
+
+<p><img src="/assets/output_31_1.png" alt="png" /></p>
+
+<p>This now appears to be an excellent fit (which we could confirm using PMCC).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1.97713881883
+</code></pre>
+</div>
+
+<p>After the noise at the start, the log-log graph, log time vs log list length settles down to have gradient two, hence complexity of Bubble Sort is <script type="math/tex">O(n^2)</script> where <script type="math/tex">n =</script> list length.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">J. S. Cooper - A Curious Mathematician</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+         
+          <li><a href="mailto:jsc42@cantab.net">jsc42@cantab.net</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jamesthetab"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jamesthetab</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/jamesthetab">
+            <span class="icon  icon--twitter">
+             <svg viewBox="0 0 61 61">
+             <path fill="#828282" d="M49.265,4.667H7.145c-2.016,0-3.651,1.596-3.651,3.563v42.613c0,1.966,1.635,3.562,3.651,3.562h42.12   c2.019,0,3.654-1.597,3.654-3.562V8.23C52.919,6.262,51.283,4.667,49.265,4.667z M18.475,46.304h-7.465V23.845h7.465V46.304z    M14.743,20.777h-0.05c-2.504,0-4.124-1.725-4.124-3.88c0-2.203,1.67-3.88,4.223-3.88c2.554,0,4.125,1.677,4.175,3.88   C18.967,19.052,17.345,20.777,14.743,20.777z M45.394,46.304h-7.465V34.286c0-3.018-1.08-5.078-3.781-5.078   c-2.062,0-3.29,1.389-3.831,2.731c-0.197,0.479-0.245,1.149-0.245,1.821v12.543h-7.465c0,0,0.098-20.354,0-22.459h7.465v3.179   c0.992-1.53,2.766-3.709,6.729-3.709c4.911,0,8.594,3.211,8.594,10.11V46.304z"/>
+             </svg>
+            </span>
+            <span class="username">jamesthetab
+            </span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>A place for me to reflect on my experiences of mathematical research, education, coding,  and the search for an engaging career.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+  </body>
+
+</html>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

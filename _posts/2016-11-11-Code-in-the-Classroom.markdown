@@ -9,7 +9,7 @@ categories: jekyll update
 Guiding Principles
 --------------------------------
 
-Next week my school is hosting an Apple Distinguished Educators conference, and this has provided yhe ideal opportunity for me to pin down what I think is possible with Swift in math, and how we should concentrate our energies over the coming months.
+Next week my school is hosting an Apple Distinguished Educators conference, and this has provided the ideal opportunity for me to pin down what I think is possible with Swift in math, and how we should concentrate our energies over the coming months.
 
 Our school employs a lot of technology, all of which is measured against the three pillars of our overall digital strategy: to provide seamless access to content, remove barriers to learning and allow teachers to do what they do best (ask and answer great questions). The hardware/software isn't our starting point, the learning opportunity is paramount.
 
