@@ -10,8 +10,8 @@
   <meta name="description" content="Earthquakes and Maps">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/10/19/Exploring-a-Large-Data-Set.html">
-  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2016/10/19/Exploring-a-Large-Data-Set.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -83,18 +83,17 @@
 
 <p>Now reopen a Jupyter Notebook and we are ready to proceed. I will cummulative build up the code. Firstly, we import packages and ask that outputs are displayed inline.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</code></pre>
-</div>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
 
 <p>Next we draw a basic map centred on North America, complete with lines of latitude and longitude.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="c"># make sure the value of resolution is a lowercase L,</span>
 <span class="c">#  for 'low', not a numeral 1</span>
@@ -110,16 +109,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_4_0.png" alt="png" /></p>
 
 <p>Now we fill in the oceans and lakes and change the focus to the UK.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'ortho'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
@@ -133,16 +131,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_6_0.png" alt="png" /></p>
 
 <p>I now experiment with different projections, changing ‘'’ortho’’’ to ‘'’robin’’’, ‘'’hammer’’’, and ‘'’vandg’’’.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
@@ -156,14 +153,13 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_8_0.png" alt="png" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'hammer'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
@@ -177,14 +173,13 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_9_0.png" alt="png" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'vandg'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
@@ -198,16 +193,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_10_0.png" alt="png" /></p>
 
 <p>Next I zoom on a specific area by giving the coordinates of the bottom left and top right point I’m interested in.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> 
@@ -223,16 +217,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_12_0.png" alt="png" /></p>
 
 <p>I now turn the resolution to high (‘h’), and make small island appear by reducing the cut off area from 1000 to 0.1 km^2.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
@@ -248,16 +241,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_144_0.png" alt="png" /></p>
 
 <p>I now illusatrate how to add a point on the map by manually giving coordinates.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
@@ -278,16 +270,15 @@
 <span class="n">my_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_16_0.png" alt="png" /></p>
 
 <p>I can add more points and add labels.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">my_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'merc'</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
               <span class="n">resolution</span><span class="o">=</span><span class="s">'h'</span><span class="p">,</span> <span class="n">area_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
@@ -312,51 +303,46 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xpt</span><span class="p">,</span> <span class="n">ypt</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_18_0.png" alt="png" /></p>
 
 <p>The real power of this script is that using Pandas I can import from the URL and get “live” data and pick out the columns I need.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It is now easy to convert these DataFrames into lists.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">magnitudes</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">magnitudes</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
 
 <span class="n">lats</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"latitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">lons</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"longitude"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">magnitudess</span> <span class="o">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"mag"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Display the first 5 lats, lons, and mags.</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Display the first 5 lats, lons, and mags.</span>
 <span class="k">print</span> <span class="s">'lats'</span><span class="p">,</span> <span class="n">lats</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="k">print</span> <span class="s">'lons'</span><span class="p">,</span> <span class="n">lons</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="k">print</span> <span class="s">'magnitudes'</span><span class="p">,</span> <span class="n">magnitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>lats [33.975999999999999, 63.4773, 62.212899999999998, 32.5833333, -9.0645000000000007]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lats [33.975999999999999, 63.4773, 62.212899999999998, 32.5833333, -9.0645000000000007]
 lons [-117.76100000000001, -154.9709, -145.61279999999999, -116.98883329999998, 123.9038]
 magnitudes []
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once I have the coordinates as lists it easy to plot the points where eartquakes took place (as above).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># --- Build Map ---</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># --- Build Map ---</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
               <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
@@ -371,16 +357,15 @@ magnitudes []
 <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_25_0.png" alt="png" /></p>
 
 <p>I now consolidate the code into a single cell, and look at scaling the diameter of the plot according to the magnitude of the quake.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
@@ -393,8 +378,8 @@ magnitudes []
         
 <span class="c"># --- Build Map ---</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
  
 <span class="n">eq_map</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s">'robin'</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="s">'l'</span><span class="p">,</span> <span class="n">area_thresh</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span>
               <span class="n">lat_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">130</span><span class="p">)</span>
@@ -412,16 +397,15 @@ magnitudes []
     <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">msize</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_27_0.png" alt="png" /></p>
 
 <p>To aid data visualization further I colour code the quakes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
@@ -434,8 +418,8 @@ magnitudes []
         
 <span class="c"># --- Build Map ---</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="k">def</span> <span class="nf">get_marker_color</span><span class="p">(</span><span class="n">magnitude</span><span class="p">):</span>
     <span class="c"># Returns green for small earthquakes, yellow for moderate</span>
@@ -464,16 +448,15 @@ magnitudes []
     <span class="n">eq_map</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker_string</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">msize</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_29_0.png" alt="png" /></p>
 
 <p>Finally, I add a title and then use Nasa’s data to colour the globe (‘'’eq_map.bluemarble()’’’).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.csv'</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'latitude'</span><span class="p">,</span><span class="s">'longitude'</span><span class="p">,</span><span class="s">'mag'</span><span class="p">])</span>
@@ -486,8 +469,8 @@ magnitudes []
         
 <span class="c"># --- Build Map ---</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="k">def</span> <span class="nf">get_marker_color</span><span class="p">(</span><span class="n">magnitude</span><span class="p">):</span>
     <span class="c"># Returns green for small earthquakes, yellow for moderate</span>
@@ -519,8 +502,7 @@ magnitudes []
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title_string</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_31_0.png" alt="png" /></p>
 

@@ -10,8 +10,8 @@
   <meta name="description" content="Over the past few weeks I’ve really begun to appreciate the versatility of Python for data analysis as I have discovered a large number of powerful packages.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/08/29/Sampyl-Package.html">
-  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2016/08/29/Sampyl-Package.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -72,9 +72,9 @@
 
 <p>I love the <code class="highlighter-rouge">jointplot</code> using <code class="highlighter-rouge">seaborn</code> at the end of the example below (sampling from a 2D correlated normal distribution) which simultaneously shows individual distributions as well as correlation.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="kn">import</span> <span class="nn">sampyl</span> <span class="kn">as</span> <span class="nn">smp</span>
+<span class="kn">import</span> <span class="nn">sampyl</span> <span class="k">as</span> <span class="n">smp</span>
 <span class="kn">from</span> <span class="nn">sampyl</span> <span class="kn">import</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">seaborn</span>
 
@@ -88,12 +88,10 @@
 <span class="n">chain</span> <span class="o">=</span> <span class="n">nuts</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="n">seaborn</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">chain</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">stat_func</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Progress: [##############################] 1000 of 1000 samples
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Progress: [##############################] 1000 of 1000 samples
+</code></pre></div></div>
 
 <p><img src="/assets/sampyljsc.png" alt="png" /></p>
 

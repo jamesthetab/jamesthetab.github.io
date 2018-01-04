@@ -10,8 +10,8 @@
   <meta name="description" content="As an educator I often reflect on what characteristics make a good mathematician. Clearly, there has to be a basic level of competence in arithmetic and alge...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/07/30/What-makes-a-Mathematician.html">
-  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2016/07/30/What-makes-a-Mathematician.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -76,10 +76,10 @@
 
 <p>We now have a choice, whether to continue in our heads or write some code to check numbers. I went for code, and studied the integers up to 1000:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="k">def</span> <span class="nf">squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
@@ -117,10 +117,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">'b-'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"The Happy Numbers we've discovered are"</span><span class="p">),</span> <span class="n">H</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>There are 20 Happy numbers between 1 and 100
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>There are 20 Happy numbers between 1 and 100
 There are 32 Happy numbers between 1 and 200
 There are 44 Happy numbers between 1 and 300
 There are 66 Happy numbers between 1 and 400
@@ -130,14 +129,12 @@ There are 101 Happy numbers between 1 and 700
 There are 111 Happy numbers between 1 and 800
 There are 124 Happy numbers between 1 and 900
 There are 143 Happy numbers between 1 and 1000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/output_0_1.png" alt="png" title="Frequency of Happy Numbers up to 1,000" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>The Happy Numbers we've discovered are [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100, 103, 109, 129, 130, 133, 139, 167, 176, 188, 190, 192, 193, 203, 208, 219, 226, 230, 236, 239, 262, 263, 280, 291, 293, 301, 302, 310, 313, 319, 320, 326, 329, 331, 338, 356, 362, 365, 367, 368, 376, 379, 383, 386, 391, 392, 397, 404, 409, 440, 446, 464, 469, 478, 487, 490, 496, 536, 556, 563, 565, 566, 608, 617, 622, 623, 632, 635, 637, 638, 644, 649, 653, 655, 656, 665, 671, 673, 680, 683, 694, 700, 709, 716, 736, 739, 748, 761, 763, 784, 790, 793, 802, 806, 818, 820, 833, 836, 847, 860, 863, 874, 881, 888, 899, 901, 904, 907, 910, 912, 913, 921, 923, 931, 932, 937, 940, 946, 964, 970, 973, 989, 998, 1000]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The Happy Numbers we've discovered are [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100, 103, 109, 129, 130, 133, 139, 167, 176, 188, 190, 192, 193, 203, 208, 219, 226, 230, 236, 239, 262, 263, 280, 291, 293, 301, 302, 310, 313, 319, 320, 326, 329, 331, 338, 356, 362, 365, 367, 368, 376, 379, 383, 386, 391, 392, 397, 404, 409, 440, 446, 464, 469, 478, 487, 490, 496, 536, 556, 563, 565, 566, 608, 617, 622, 623, 632, 635, 637, 638, 644, 649, 653, 655, 656, 665, 671, 673, 680, 683, 694, 700, 709, 716, 736, 739, 748, 761, 763, 784, 790, 793, 802, 806, 818, 820, 833, 836, 847, 860, 863, 874, 881, 888, 899, 901, 904, 907, 910, 912, 913, 921, 923, 931, 932, 937, 940, 946, 964, 970, 973, 989, 998, 1000]
+</code></pre></div></div>
 
 <p>This graph gives us an insight into what is happening, but it is still not clear what conjecture we should make based on this.</p>
 

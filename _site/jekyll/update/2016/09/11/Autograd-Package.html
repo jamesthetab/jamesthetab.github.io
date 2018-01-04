@@ -10,8 +10,8 @@
   <meta name="description" content="Autograd can automatically differentiate native Python and Numpy code.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2016/09/11/Autograd-Package.html">
-  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2016/09/11/Autograd-Package.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -74,9 +74,9 @@
 
 <p>We can see <code class="highlighter-rouge">grad</code> in action by repeatedly differentiating a cubic and plotting the results on the same axes.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Import packges I need</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Import packges I need</span>
 
-<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">autograd</span> <span class="kn">import</span> <span class="n">grad</span>
 
 <span class="c"># I begin by defining my function</span>
@@ -86,26 +86,22 @@
 
 <span class="n">grad_poly</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>       <span class="c"># Obtain its gradient function</span>
 <span class="n">grad_poly</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>               <span class="c"># Evaluate the gradient at x = 1.0</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>9.0
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9.0
+</code></pre></div></div>
 
 <p>Compare gradient of tangent with that of a small chord:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="n">poly</span><span class="p">(</span><span class="mf">1.0001</span><span class="p">)</span> <span class="o">-</span> <span class="n">poly</span><span class="p">(</span><span class="mf">0.9999</span><span class="p">))</span> <span class="o">/</span> <span class="mf">0.0002</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">poly</span><span class="p">(</span><span class="mf">1.0001</span><span class="p">)</span> <span class="o">-</span> <span class="n">poly</span><span class="p">(</span><span class="mf">0.9999</span><span class="p">))</span> <span class="o">/</span> <span class="mf">0.0002</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>9.000000029981692
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>9.000000029981692
+</code></pre></div></div>
 
 <p>We can continue to differentiate as many times as we like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">elementwise_grad</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">elementwise_grad</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">grad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>  
 
 <span class="n">grad_poly</span>   <span class="o">=</span> <span class="n">elementwise_grad</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span> 
@@ -115,7 +111,7 @@
 
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">poly</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
          <span class="n">x</span><span class="p">,</span> <span class="n">grad_poly</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
@@ -123,8 +119,7 @@
          <span class="n">x</span><span class="p">,</span> <span class="n">grad_poly_3</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
          <span class="n">x</span><span class="p">,</span> <span class="n">grad_poly_4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/autogradjsc.png" alt="png" /></p>
 

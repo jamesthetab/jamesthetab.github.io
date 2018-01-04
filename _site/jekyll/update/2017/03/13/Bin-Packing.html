@@ -10,8 +10,8 @@
   <meta name="description" content="In this introduction to I look at four different algorithms and then compare their efficiency (in terms of number of bins required).">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://jamesthetab.github.io/jekyll/update/2017/03/13/Bin-Packing.html">
-  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://jamesthetab.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2017/03/13/Bin-Packing.html">
+  <link rel="alternate" type="application/rss+xml" title="J. S. Cooper - A Curious Mathematician" href="http://localhost:4000/feed.xml">
 </head>
 
 
@@ -68,15 +68,13 @@
 
 <p>Before we begin looking at algorithms I import the random number generator and create a short list to work with.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div></div>
 
 <h2 id="next-fit-algorithm">Next Fit Algorithm</h2>
 
@@ -84,7 +82,7 @@
 
 <p>I begin at creating a particular instance of the algorithm, and then make into a function.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#bin size</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#bin size</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
@@ -101,10 +99,9 @@
         <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">])</span>    <span class="c">#otherwise create a new list with it in</span>
     <span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[6, 1, 5, 2, 0, 8, 7, 3, 4, 9]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[6, 1, 5, 2, 0, 8, 7, 3, 4, 9]
 [[6, 1]]
 [[6, 1], [5]]
 [[6, 1], [5, 2]]
@@ -114,10 +111,9 @@
 [[6, 1], [5, 2, 0], [8], [7, 3]]
 [[6, 1], [5, 2, 0], [8], [7, 3], [4]]
 [[6, 1], [5, 2, 0], [8], [7, 3], [4], [9]]
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">nextfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c">#inputs both a list and a size of bin</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">nextfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c">#inputs both a list and a size of bin</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#bin size</span>
     
     <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
@@ -133,22 +129,19 @@
             <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">A</span>
     
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">nextfit</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nextfit</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[[6, 1], [5, 2, 0], [8], [7, 3], [4], [9]]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[6, 1], [5, 2, 0], [8], [7, 3], [4], [9]]
+</code></pre></div></div>
 
 <h2 id="first-fit-algorithm">First Fit Algorithm</h2>
 
 <p>Put each item as you come to it into the oldest (earliest opened) bin into which it fits.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#bin size</span>
 
@@ -168,10 +161,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">])</span>
     <span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[5, 2, 0, 8, 7, 3, 4, 9, 1]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 2, 0, 8, 7, 3, 4, 9, 1]
 [[5, 2]]
 [[5, 2, 0]]
 [[5, 2, 0], [8]]
@@ -180,10 +172,9 @@
 [[5, 2, 0, 3], [8], [7], [4]]
 [[5, 2, 0, 3], [8], [7], [4], [9]]
 [[5, 2, 0, 3], [8, 1], [7], [4], [9]]
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">firstfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c">#inputs both a list and a size of bin</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">firstfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>  <span class="c">#inputs both a list and a size of bin</span>
     <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">X</span>
 
@@ -199,16 +190,13 @@
             <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">A</span>
     
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">firstfit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">firstfit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[[5, 2, 0, 3], [8, 1], [7], [4], [9]]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[5, 2, 0, 3], [8, 1], [7], [4], [9]]
+</code></pre></div></div>
 
 <h2 id="worst-fit-algorithm">Worst Fit Algorithm</h2>
 
@@ -216,7 +204,7 @@
 
 <p>A key observation is if it doesn’t fit into the emptiest bin it won’t fit in any existing bin so we can break the searching loop.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span> <span class="c">#bin size</span>
 
@@ -242,10 +230,9 @@
                 <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">])</span>
             <span class="k">break</span>
     <span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[5, 2, 0, 8, 7, 3, 4, 9, 1]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[5, 2, 0, 8, 7, 3, 4, 9, 1]
 [[5, 2]]
 [[5, 2, 0]]
 [[5, 2, 0], [8]]
@@ -254,10 +241,9 @@
 [[5, 2, 0, 3], [8], [7], [4]]
 [[5, 2, 0, 3], [8], [7], [4], [9]]
 [[5, 2, 0, 3], [8], [7], [4, 1], [9]]
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">worstfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">worstfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
     
     <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">X</span>
@@ -280,16 +266,13 @@
                 <span class="k">break</span>
       
     <span class="k">return</span> <span class="n">A</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">worstfit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">worstfit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[[5, 2, 0, 3], [8], [7], [4, 1], [9]]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[5, 2, 0, 3], [8], [7], [4, 1], [9]]
+</code></pre></div></div>
 
 <h2 id="worst-fit-decreasing">Worst Fit Decreasing</h2>
 
@@ -297,21 +280,19 @@
 
 <p>To put in descending order I use the built-in <code class="highlighter-rouge">sorted()</code> function followed by a loop which writes the list backwards.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">Y</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Y</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
     <span class="n">Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">])</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
 <span class="k">print</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[10, 8, 7, 6, 5, 4, 4]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[10, 8, 7, 6, 5, 4, 4]
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">worstfitdecreasing</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">worstfitdecreasing</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
@@ -319,14 +300,13 @@
         <span class="n">Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="o">-</span><span class="n">i</span><span class="p">])</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
     <span class="k">return</span> <span class="n">worstfit</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="comparison">Comparison</h2>
 
 <p>I’m not attempting to rigorously test efficiencies here, but I propose to look at 100 lists of 10 random numbers between 0 and 10, placed into bins of capacity 20 and look at the average number of bins needed by the three four approaches: <code class="highlighter-rouge">nextfit(X,n)</code>; <code class="highlighter-rouge">firstfit(X,n)</code>; <code class="highlighter-rouge">worstfit(X,n)</code>; <code class="highlighter-rouge">worstfitdecreasing(X,n)</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">A</span><span class="o">=</span><span class="p">[]</span> <span class="c">#List to store number of bins of nextfit(X,n)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="o">=</span><span class="p">[]</span> <span class="c">#List to store number of bins of nextfit(X,n)</span>
 <span class="n">B</span><span class="o">=</span><span class="p">[]</span> <span class="c">#List to store number of bins of firstfit(X,n)</span>
 <span class="n">C</span><span class="o">=</span><span class="p">[]</span> <span class="c">#List to store number of bins of worstfit(X,n)</span>
 <span class="n">D</span><span class="o">=</span><span class="p">[]</span> <span class="c">#List to store number of bins of worstfitdecreasing(X,n)</span>
@@ -344,15 +324,13 @@
 <span class="k">print</span> <span class="s">"Bin efficiency for the firstfit algorithm:"</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span>
 <span class="k">print</span> <span class="s">"Bin efficiency for the worstfit algorithm:"</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span>
 <span class="k">print</span> <span class="s">"Bin efficiency for the worstfitdecreasing algorithm:"</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Bin efficiency for the nextfit algorithm: 5.98
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bin efficiency for the nextfit algorithm: 5.98
 Bin efficiency for the firstfit algorithm: 2.63
 Bin efficiency for the worstfit algorithm: 2.31
 Bin efficiency for the worstfitdecreasing algorithm: 2.02
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We already see the expected pattern, with <code class="highlighter-rouge">worstfitdecreasing</code> superiority beginning to emerge.</p>
 
